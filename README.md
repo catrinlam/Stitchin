@@ -174,9 +174,50 @@ User stories are managed in the GitHub project board. I have created issues for 
 
 ## Wireframes
 
+The wireframes for Stitchin were created using Balsamiq. They include views for desktop, tablet, and mobile devices to ensure a responsive design.
+
+- **Home Page**
+  - The home page provides an overview of the platform and its features.
+  ![Home Page](docs/wireframes/home.png)
+
+- **Pattern Page**
+  - The pattern page displays individual patterns with details and user interactions.
+  ![Pattern Page](docs/wireframes/pattern.png)
+
+- **Profile Page**
+  - The profile page allows users to view and edit their personal information.
+  ![Profile Page](docs/wireframes/profile.png)
+
+- **Upload Pattern Page**
+  - The upload pattern page enables users to upload new patterns to the platform.
+  ![Upload Pattern Page](docs/wireframes/upload-pattern.png)
+
+- **Library Page**
+  - The library page shows the patterns saved by the user in their personal library.
+  ![Library Page](docs/wireframes/library.png)
+
+- **Sign Up Page**
+  - The sign-up page allows new users to create an account on the platform.
+  ![Sign Up Page](docs/wireframes/sign-up.png)
+
+- **About Us/Reviews Page**
+  - The About Us/Reviews page provides information about the platform and allows users to leave reviews.
+  ![About Us/Reviews Page](docs/wireframes/about-us.png)
+
+
 ## Database Schema - Entity Relationship Diagram
 
+The database schema for Stitchin was created using dbdiagram.io. It includes tables for users, patterns, comments, libraries, and pattern hooks needles.
+
+![Database Schema](docs/readme/erd.png)
+
 ## Security
+
+Stitchin employs several security measures to protect user data and ensure a safe user experience:
+
+- **User Authentication:** User registration and authentication are handled by [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/).
+- **Defensive Design:** Input validation and error messages provide feedback to users, guiding them towards the desired outcome. Unregistered users are redirected to the login page when trying to access restricted features.
+- **CSRF Protection:** CSRF (Cross-Site Request Forgery) tokens are included in every form to help authenticate the request with the server when the form is submitted.
 
 # Features
 
@@ -185,8 +226,6 @@ User stories are managed in the GitHub project board. I have created issues for 
 ## CRUD Functionality
 
 ## Feature Showcase
-
-## Future Features
 
 # Technologies & Languages Used
 
