@@ -1,0 +1,77 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table users {
+  id integer [primary key]
+  username varchar(255) [unique]
+  email varchar(255) [unique]
+  password_hash varchar(255)
+  role enum('regular', 'admin') [default: 'regular']
+  created_at datetime
+  updated_at datetime
+}
+
+Table patterns {
+  id integer [primary key]
+  user_id integer [ref: <> users.id]
+  title varchar(255)
+  description text
+  difficulty_level difficulty_level
+  pdf_url varchar(255)
+  images text
+  videos text
+  tag_id integer [ref: > tags.id]
+  created_at datetime
+  updated_at datetime
+}
+
+enum difficulty_level {
+  Easy
+  Medium
+  Hard
+}
+
+Table libraries {
+  id integer [primary key]
+  user_id integer [ref: - users.id]
+  pattern_id integer [ref: > patterns.id]
+  created_at datetime
+  updated_at datetime
+}
+
+Table collections {
+  id integer [primary key]
+  name varchar(255)
+  library_id integer [ref: > libraries.id]
+  pattern_id integer [ref: < patterns.id]
+  created_at datetime
+}
+
+Table comments {
+  id integer [primary key]
+  user_id integer [ref: > users.id]
+  pattern_id integer [ref: > patterns.id]
+  parent_comment_id integer [ref: > comments.id, null]
+  content text
+  created_at datetime
+  updated_at datetime
+}
+
+Table likes {
+  id integer [primary key]
+  user_id integer [ref: > users.id]
+  pattern_id integer [ref: > patterns.id]
+  created_at datetime
+}
+
+Table comment_likes {
+  id integer [primary key]
+  user_id integer [ref: > users.id]
+  comment_id integer [ref: > comments.id]
+  created_at datetime
+}
+
+Table tags {
+  id integer [primary key]
+  name varchar(100) [unique]
+}
