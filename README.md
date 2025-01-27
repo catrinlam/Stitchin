@@ -295,7 +295,21 @@ Stitchin employs several security measures to protect user data and ensure a saf
 
 ## Libraries & Frameworks
 
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **Python**
+- **Django**
+
 ## Tools & Programs
+
+- **Cloudinary:** Used for cloud media storage for images.
+- **Git:** Used for version control.
+- **GitHub:** Used for online storage of codebase and Projects tool.
+- **Heroku:** Used to host the website.
+- **Balsamiq:** Used for creating wireframes.
+- **Coolors:** Used for creating the color theme.
+- **Favicon:** Used for converting the icon into favicon.
 
 # Testing
 
@@ -306,8 +320,6 @@ Stitchin employs several security measures to protect user data and ensure a saf
 ## Django Project Setup
 
 ## Cloudinary API
-
-## Elephant SQL
 
 ## Heroku deployment
 
