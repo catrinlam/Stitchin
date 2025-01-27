@@ -184,6 +184,10 @@ The wireframes for Stitchin were created using Balsamiq. They include views for 
   - The pattern page displays individual patterns with details and user interactions.
   ![Pattern Page](docs/wireframes/pattern.png)
 
+- **Sign Up Page**
+  - The sign-up page allows new users to create an account on the platform.
+  ![Sign Up Page](docs/wireframes/sign-up.png)
+
 - **Profile Page**
   - The profile page allows users to view and edit their personal information.
   ![Profile Page](docs/wireframes/profile.png)
@@ -195,10 +199,6 @@ The wireframes for Stitchin were created using Balsamiq. They include views for 
 - **Library Page**
   - The library page shows the patterns saved by the user in their personal library.
   ![Library Page](docs/wireframes/library.png)
-
-- **Sign Up Page**
-  - The sign-up page allows new users to create an account on the platform.
-  ![Sign Up Page](docs/wireframes/sign-up.png)
 
 - **About Us/Reviews Page**
   - The About Us/Reviews page provides information about the platform and allows users to leave reviews.
@@ -223,9 +223,64 @@ Stitchin employs several security measures to protect user data and ensure a saf
 
 ## User View - Registered/Unregistered
 
+| Page                  | Unregistered Users | Logged-in Users |
+|-----------------------|--------------------|-----------------|
+| Home Page             | Visible            | Visible         |
+| Pattern Page          | Visible            | Visible         |
+| Profile Page          | Not Visible, showing the 'sign up/log in' button only | Visible         |
+| Upload Pattern Page   | Not Visible        | Visible         |
+| Library Page          | Not Visible        | Visible         |
+| About Us/Reviews Page | Visible, showing 'log in to leave feedback' button | Visible (review form visible) |
+
 ## CRUD Functionality
 
+| Feature  | Create | Read | Update | Delete |
+|----------|--------|------|--------|--------|
+| Pattern  | Yes    | Yes  | Yes    | Yes    |
+| Profile  | Yes    | Yes  | Yes    | Yes    |
+| Library  | Yes (Created upon registration) | Yes  | Yes    | No (It is unnecessary to delete the user's library as it is intended for them to save the interested patterns for later) |
+| Comments | Yes    | Yes  | Yes    | Yes    |
+
 ## Feature Showcase
+
+<details>
+    <summary>Header: Provides navigation links to different sections of the site.</summary>  
+    <img src="docs/views/header.png">  
+</details>
+
+<details>
+    <summary>Footer: Provides additional information and links.</summary>  
+    <img src="docs/views/footer.png">  
+</details>
+<details>
+    <summary>Home Page: Provides an overview of the platform and its features.</summary>  
+    <img src="docs/views/home.png">  
+</details>
+
+<details>
+    <summary>Pattern Page: Displays individual patterns with details and user interactions.</summary>  
+    <img src="docs/views/pattern.png">  
+</details>
+
+<details>
+    <summary>Profile Page: Allows users to view and edit their personal information.</summary>  
+    <img src="docs/views/profile.png">  
+</details>
+
+<details>
+    <summary>Upload Pattern Page: Enables users to upload new patterns to the platform.</summary>  
+    <img src="docs/views/upload-pattern.png">  
+</details>
+
+<details>
+    <summary>Library Page: Shows the patterns saved by the user in their personal library.</summary>  
+    <img src="docs/views/library.png">  
+</details>
+
+<details>
+    <summary>About Us/Reviews Page: Provides information about the platform and allows users to leave reviews. The review form is only visible to logged-in users.</summary>  
+    <img src="docs/views/about-us.png">  
+</details>
 
 # Technologies & Languages Used
 
