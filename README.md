@@ -282,6 +282,15 @@ Stitchin employs several security measures to protect user data and ensure a saf
     <img src="docs/views/about-us.png">  
 </details>
 
+## Future Features
+
+- **Pattern Liking:** Enable logged-in users to like patterns.
+- **Comment on Comments:** Allow users to comment on others' comments and like comments.
+- **Tagging:** Allow users to tag patterns for better categorization.
+- **Create Collection within Library:** Allow users to create collections within their library to categorize the patterns.
+- **More Knitting Tools and Pattern Details:** Allow users to upload different crafts with more pattern details.
+- **Buying Pattern:** Enable users to sell their patterns and other users to support the creators.
+
 # Technologies & Languages Used
 
 ## Libraries & Frameworks
