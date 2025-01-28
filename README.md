@@ -313,6 +313,8 @@ Stitchin employs several security measures to protect user data and ensure a saf
 
 # Testing
 
+Please refer to [TESTING.md](TESTING.md) for all testing.
+
 # Deployment
 
 ## Connecting to GitHub
