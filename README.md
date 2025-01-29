@@ -46,11 +46,13 @@ Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
   - [Local Deployment](#local-deployment)
   - [Clone Project](#clone-project)
   - [Fork Project](#fork-project)
-- [Use of AI](#use-of-ai)
-  - [AI for Code Creation](#ai-for-code-creation)
-  - [AI for Debugging](#ai-for-debugging)
-  - [AI for Code Optimization](#ai-for-code-optimization)
-  - [AI for Automated Unit Tests](#ai-for-automated-unit-tests)
+- [AI Implementation and Orchestration](#ai-implementation-and-orchestration)
+  - [Use Cases and Reflections](#use-cases-and-reflections)
+  - [Code Creation](#code-creation)
+  - [Debugging](#debugging)
+  - [Performance and UX Optimization](#performance-and-ux-optimization)
+  - [Automated Unit Testing](#automated-unit-testing)
+  - [Overall Impact](#overall-impact)
 - [Credits](#credits)
   - [Code](#code)
   - [Media](#media)
@@ -110,13 +112,15 @@ The Kanban boarde used for this project is a GitHub project board with the follo
 - **To Do:** Tasks that need to ber done.
 - **In Progress:** Tasks that are currently being worked on.
 - **Testing:** Tasks that are completed and need to be tested.
-- **Done:** Tasks  that are completed and tested.
+- **Done:** Tasks that are completed and tested.
 
 You can view the project board [here](https://github.com/users/catrinlam/projects/6).
 
 ## User Stories
 
 User stories are managed in the GitHub project board. I have created issues for each user story and assigned them to the relevant column.
+
+Link to User Stories in GitHub Projects: [GitHub Projects Kanban Board](https://github.com/users/catrinlam/projects/6)
 
 ### Visitor User Stories
 
@@ -132,41 +136,44 @@ User stories are managed in the GitHub project board. I have created issues for 
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **registered user**, I can **create and update my profile** so that I can **personalize my account**. | MUST HAVE |
-| As a **registered user**, I can **delete my account** so that I can **remove my profile and all my personal data from the platform**. | MUST HAVE |
-| As a **registered user**, I can **log in via my email and password** so that I can **access my account**. | MUST HAVE |
-| As a **registered user**, I can **log out of my account** so that I can **securely end my session**. | MUST HAVE |
-| As a **registered user**, I can **see notifications when I register, update, or delete my account** so that I am **informed of the changes**. | SHOULD HAVE |
+| As a **logged in user**, I can **create and update my profile** so that I can **personalize my account**. | MUST HAVE |
+| As a **logged in user**, I can **delete my account** so that I can **remove my profile and all my personal data from the platform**. | MUST HAVE |
+| As a **logged in user**, I can **log in via my email and password** so that I can **access my account**. | MUST HAVE |
+| As a **logged in user**, I can **log out of my account** so that I can **securely end my session**. | MUST HAVE |
+| As a **logged in user**, I can **see notifications when I register, update, or delete my account** so that I am **informed of the changes**. | SHOULD HAVE |
+| As a **logged in user**, I can **see my username at the top right corner** so that I know I am **logged in**. | MUST HAVE |
 
 ### Pattern
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **registered user**, I can **upload new patterns to the platform** so that I can **share my creations with the community**. | MUST HAVE |
-| As a **registered user**, I can **edit my own pattern** so that I can **update or correct it**. | MUST HAVE |
-| As a **registered user**, I can **delete my own pattern** so that I can **remove it if needed**. | MUST HAVE |
-| As a **registered user**, I can **add other users as collaborators to the pattern** so that we can **work on it together**. | COULD HAVE |
-| As a **registered user**, I can **see notifications when I upload, update, or delete a pattern** so that I am **informed of the changes**. | SHOULD HAVE |
+| As a **logged in user**, I can **upload new patterns to the platform** so that I can **share my creations with the community**. | MUST HAVE |
+| As a **logged in user**, I can **edit my own pattern** so that I can **update or correct it**. | MUST HAVE |
+| As a **logged in user**, I can **delete my own pattern** so that I can **remove it if needed**. | MUST HAVE |
+| As a **logged in user**, I can **add other users as collaborators to the pattern** so that we can **work on it together**. | COULD HAVE |
+| As a **logged in user**, I can **see notifications when I upload, update, or delete a pattern** so that I am **informed of the changes**. | SHOULD HAVE |
 | As a **user**, I can **search for a pattern** so that I can **find specific patterns quickly**. | SHOULD HAVE |
 | As a **user**, I can **filter out in the search bar** so that I can **narrow down the patterns based on criteria**. | SHOULD HAVE |
-| As a **registered user**, I can **like/unlike a pattern** so that I can **show my appreciation for it**. | COULD HAVE |
+| As a **logged in user**, I can **like/unlike a pattern** so that I can **show my appreciation for it**. | COULD HAVE |
 
 ### Library
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **registered user**, I can **add the pattern to my library** so that I can **easily access it later**. | MUST HAVE |
-| As a **registered user**, I can **remove a pattern from my library** so that I can **manage my saved patterns**. | MUST HAVE |
-| As a **registered user**, I can **create collections in my library** so that I can **organize my patterns**. | COULD HAVE |
-| As a **registered user**, I can **see notifications when I add or remove a pattern from my library** so that I am **informed of the changes**. | SHOULD HAVE |
+| As a **logged in user**, I can **add the pattern to my library** so that I can **easily access it later**. | MUST HAVE |
+| As a **logged in user**, I can **remove a pattern from my library** so that I can **manage my saved patterns**. | MUST HAVE |
+| As a **logged in user**, I can **create collections in my library** so that I can **organize my patterns**. | COULD HAVE |
+| As a **logged in user**, I can **see notifications when I add or remove a pattern from my library** so that I am **informed of the changes**. | SHOULD HAVE |
 
 ### Comments
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **registered user**, I can **comment on a pattern** so that I can **share my thoughts and feedback**. | MUST HAVE |
-| As a **registered user**, others can **comment on my comment** so that we can **have a discussion**. | COULD HAVE |
-| As a **registered user**, I can **see notifications when I comment on a pattern** so that I am **informed of the activity**. | SHOULD HAVE |
+| As a **logged in user**, I can **comment on a pattern** so that I can **share my thoughts and feedback**. | MUST HAVE |
+| As a **logged in user**, others can **comment on my comment** so that we can **have a discussion**. | COULD HAVE |
+| As a **logged in user**, I can **update my comment** so that I can **correct or improve it**. | MUST HAVE |
+| As a **logged in user**, I can **delete my comment** so that I can **remove it if needed**. | MUST HAVE |
+| As a **logged in user**, I can **see notifications when I comment on a pattern** so that I am **informed of the activity**. | SHOULD HAVE |
 
 ### About Us/Reviews
 
@@ -433,7 +440,7 @@ You can clone the repository by following these steps:
 4. Open Git Bash or Terminal
 5. Change the current working directory to the one where you want the cloned directory
 6. In your IDE Terminal, type the following command to clone my repository:
-    - `git clone https://github.com/catrinlam/stitchin.git`
+   - `git clone https://github.com/catrinlam/stitchin.git`
 7. Press Enter to create your local clone.
 
 ## Fork Project
@@ -445,37 +452,35 @@ You can fork this repository by using the following steps:
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account
 
-# Use of AI
+# AI Implementation and Orchestration
 
-## AI for Code Creation
+## Use Cases and Reflections
 
-AI tools were strategically used to assist in generating code aligned with project objectives. Key decisions where AI was used include:
-- Generating initial boilerplate code for Django models and views.
-- Creating repetitive code structures, such as form validations.
+## Code Creation
 
-## AI for Debugging
+**Reflection:**
 
-AI tools were efficiently used to identify and resolve code issues. Key interventions include:
-- Detecting syntax errors and logical flaws in the code.
-- Providing suggestions for fixing bugs and improving code quality.
+**Highlight:** 
 
-## AI for Code Optimization
+## Debugging
 
-AI-driven optimization was employed to improve performance and user experience. Key contributions include:
-- Optimizing database queries for faster response times.
-- Enhancing front-end performance by suggesting efficient JavaScript and CSS practices.
+**Reflection:**
 
-## AI for Automated Unit Tests
+## Performance and UX Optimization
 
-GitHub Copilot was used to generate Django unit tests for application features, ensuring code coverage for key functionalities. Adjustments were made to improve test accuracy and completeness.
+**Reflection:** 
 
-## Reflection on AI's Role in Development
+## Automated Unit Testing
+
+**Reflection:** 
+
+## Overall Impact
 
 # Credits
 
 ## Code
 
-- Readme structure from [example project 1](https://github.com/amylour/FreeFido_v2/blob/main/README.md) and [example project 2](https://github.com/shar-nm/lens-whisperer/blob/main/README.md)
+- Readme structure from [project readme guide](https://github.com/Code-Institute-Org/html-css-project/blob/main/sample-full-stack-capstone-readme.md#ai-implementation-and-orchestration), [example project 1](https://github.com/amylour/FreeFido_v2/blob/main/README.md) and [example project 2](https://github.com/shar-nm/lens-whisperer/blob/main/README.md)
 
 ## Media
 
