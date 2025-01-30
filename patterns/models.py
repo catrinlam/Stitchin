@@ -110,14 +110,14 @@ class Pattern(models.Model):
     difficulty_level = models.IntegerField(choices=DIFFICULTY_LEVEL)
     craft = models.IntegerField(choices=CRAFT)
     yarn_weight = models.IntegerField(choices=WEIGHT)
-    hook_size = models.ForeignKey(PatternHooksNeedles, on_delete=models.SET_NULL, blank=True, null=True)
+    hook = models.ForeignKey(PatternHooksNeedles, on_delete=models.SET_NULL, blank=True, null=True)
     size = models.IntegerField(choices=SIZE, blank=True, null=True)
     category = models.IntegerField(choices=CATEGORY, blank=True, null=True)
-    pdf_url = models.URLField(max_length=255, blank=True, null=True)
-    images = models.TextField()
-    videos = models.TextField(blank=True, null=True)
+    # pdf_url = models.URLField(max_length=255, blank=True, null=True)
+    # images = models.TextField()
+    # videos = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    # updated_at = models.DateTimeField(auto_now=True)
 
 
 class Library(models.Model):
