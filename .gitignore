@@ -4,3 +4,4 @@
 env
 sample-README.md
 env.py
+__pycache__
