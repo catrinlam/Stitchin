@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = os.getenv('DEBUG') == 'False'
 
-ALLOWED_HOSTS = [".herokuapp.com"]
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -88,8 +88,8 @@ WSGI_APPLICATION = 'stitchin.wsgi.application'
 #     }
 # }
 
-if 'DEBUG' in os.environ or 'test' in sys.argv:
-    # if 'test' in sys.argv:
+# if 'DEBUG' in os.environ or 'test' in sys.argv:
+if 'test' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -99,6 +99,10 @@ if 'DEBUG' in os.environ or 'test' in sys.argv:
 else:
     DATABASES = {'default': dj_database_url.parse(
         os.environ.get('DATABASE_URL'))}
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.herokuapp.com"
+]
 
 
 # Password validation
