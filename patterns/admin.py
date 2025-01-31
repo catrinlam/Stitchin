@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pattern, PatternHooksNeedles
+from .models import Pattern, PatternHooksNeedles, Library
 
 class PatternHooksNeedlesInline(admin.TabularInline):
     model = PatternHooksNeedles
@@ -10,3 +10,4 @@ class PatternAdmin(admin.ModelAdmin):
 
 admin.site.register(Pattern, PatternAdmin)
 admin.site.register(PatternHooksNeedles)
+admin.site.register(Library)
