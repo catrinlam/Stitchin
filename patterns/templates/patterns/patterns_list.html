@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern List</title>
+</head>
+
+<body>
+    <h1>Pattern List</h1>
+    {% for pattern in object_list %}
+        <h2>{{ pattern.title }}</h2>
+        <p>{{ pattern.description }}</p>
+        <p>Author: {{ pattern.author.username }}</p>
+        <p>Difficulty Level: {{ pattern.get_difficulty_level_display }}</p>
+        <p>Craft: {{ pattern.get_craft_display }}</p>
+        <p>Yarn Weight: {{ pattern.get_yarn_weight_display }}</p>
+        <p>Size: {{ pattern.get_size_display }}</p>
+        <p>Category: {{ pattern.get_category_display }}</p>
+    {% endfor %}
+</body>
+
+</html>
