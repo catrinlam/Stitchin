@@ -111,11 +111,11 @@ class Pattern(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return f"{self.title} made by {self.author.username}"
+    # def __str__(self):
+    #     return f"{self.title} made by {self.author.username}"
 
 
-class PatternHooksNeedles(models.Model):
+class PatternHooksNeedle(models.Model):
     pattern = models.ForeignKey(
         Pattern, on_delete=models.CASCADE, related_name="pattern_hooks_needles")
     type = models.IntegerField(choices=HOOK_NEEDLE_TYPE)
@@ -123,9 +123,9 @@ class PatternHooksNeedles(models.Model):
     needle_size = models.IntegerField(
         choices=NEEDLE_SIZE, blank=True, null=True)
 
-    def __str__(self):
-        type_display = dict(HOOK_NEEDLE_TYPE).get(self.type, "Unknown")
-        return f"{type_display} for {self.pattern.title} by {self.pattern.author.username}"
+    # def __str__(self):
+    #     type_display = dict(HOOK_NEEDLE_TYPE).get(self.type, "Unknown")
+    #     return f"{type_display} for {self.pattern.title} by {self.pattern.author.username}"
 
 
 class Library(models.Model):
@@ -135,8 +135,8 @@ class Library(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
-    def __str__(self):
-        return f"{self.user.username} library"
+    # def __str__(self):
+    #     return f"{self.user.username} library"
 
 
 class Comment(models.Model):

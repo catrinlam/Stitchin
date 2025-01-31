@@ -1,13 +1,27 @@
 from django.contrib import admin
-from .models import Pattern, PatternHooksNeedles, Library
+from .models import Pattern, PatternHooksNeedle, Library
+from django_summernote.admin import SummernoteModelAdmin
 
-class PatternHooksNeedlesInline(admin.TabularInline):
-    model = PatternHooksNeedles
+class PatternHooksNeedleInline(admin.TabularInline):
+    model = PatternHooksNeedle
     extra = 1  # Number of extra forms to display
 
-class PatternAdmin(admin.ModelAdmin):
-    inlines = [PatternHooksNeedlesInline]
+@admin.register(Pattern)
+class PatternAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'author', 'difficulty_level', 'craft', 'yarn_weight', 'created_at')
+    search_fields = ('title', 'author__username')
+    list_filter = ('difficulty_level', 'craft', 'yarn_weight', 'size', 'category')
+    summernote_fields = ('description',)
+    inlines = [PatternHooksNeedleInline]
 
-admin.site.register(Pattern, PatternAdmin)
-admin.site.register(PatternHooksNeedles)
-admin.site.register(Library)
+@admin.register(PatternHooksNeedle)
+class PatternHooksNeedleAdmin(admin.ModelAdmin):
+    list_display = ('pattern__title', 'type', 'hook_size', 'needle_size', 'pattern__author')
+    search_fields = ('pattern__title', 'pattern__author__username')
+    list_filter = ('pattern', 'type', 'hook_size', 'needle_size')
+
+@admin.register(Library)
+class LibraryAdmin(admin.ModelAdmin):
+    list_display = ('user', 'created_at')
+    search_fields = ('user__username', 'pattern__title')
+    list_filter = ('created_at',)
