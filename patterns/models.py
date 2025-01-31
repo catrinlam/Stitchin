@@ -118,7 +118,7 @@ class Pattern(models.Model):
 class PatternHooksNeedles(models.Model):
     pattern = models.ForeignKey(
         Pattern, on_delete=models.CASCADE, related_name="pattern_hooks_needles")
-    type = models.IntegerField(choices=HOOK_NEEDLE_TYPE, blank=True, null=True)
+    type = models.IntegerField(choices=HOOK_NEEDLE_TYPE)
     hook_size = models.IntegerField(choices=HOOK_SIZE, blank=True, null=True)
     needle_size = models.IntegerField(
         choices=NEEDLE_SIZE, blank=True, null=True)
@@ -130,8 +130,7 @@ class PatternHooksNeedles(models.Model):
 
 class Library(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="libraries"
-    )
+        User, on_delete=models.CASCADE, related_name="libraries")
     pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
