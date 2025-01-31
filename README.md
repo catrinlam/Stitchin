@@ -482,6 +482,8 @@ You can fork this repository by using the following steps:
 
 - Readme structure from [project readme guide](https://github.com/Code-Institute-Org/html-css-project/blob/main/sample-full-stack-capstone-readme.md#ai-implementation-and-orchestration), [example project 1](https://github.com/amylour/FreeFido_v2/blob/main/README.md) and [example project 2](https://github.com/shar-nm/lens-whisperer/blob/main/README.md)
 
+- Django Tutorial - [I Think Therefore I Blog](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+4/courseware)
+
 ## Media
 
 ## Acknowledgements
