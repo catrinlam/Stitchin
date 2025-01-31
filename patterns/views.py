@@ -3,6 +3,6 @@ from django.views import generic
 from .models import Pattern
 
 class PatternList(generic.ListView):
-    model = Pattern
-    queryset = Pattern.objects.all()
-    template_name = "patterns/patterns_list.html"
+    queryset = Pattern.objects.all().order_by('-created_at')
+    template_name = "patterns/index.html"
+    paginate_by = 6

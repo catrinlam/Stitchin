@@ -1,0 +1,73 @@
+/* Base styles */
+body {
+    font-family: 'Karla', sans-serif;
+    background-color: #F6F1E1; /* Background Color: Ivory */
+    color: #343A40; /* Text Color: Dark Gray */
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display SC', serif;
+    color: #6C584C; /* Accent Color: Umber */
+}
+
+/* Primary color */
+.primary-bg {
+    background-color: #ADC178; /* Primary Color: Olivine */
+}
+
+.primary-text {
+    color: #ADC178; /* Primary Color: Olivine */
+}
+
+/* Secondary color */
+.secondary-bg {
+    background-color: #A98467; /* Secondary Color: Chamoisee */
+}
+
+.secondary-text {
+    color: #A98467; /* Secondary Color: Chamoisee */
+}
+
+/* Accent color */
+.accent-bg {
+    background-color: #6C584C; /* Accent Color: Umber */
+}
+
+.accent-text {
+    color: #6C584C; /* Accent Color: Umber */
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #ADC178; /* Primary Color: Olivine */
+    color: #F6F1E1; /* Background Color: Ivory */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #A98467; /* Secondary Color: Chamoisee */
+}
+
+.btn-secondary {
+    background-color: #A98467; /* Secondary Color: Chamoisee */
+    color: #F6F1E1; /* Background Color: Ivory */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #6C584C; /* Accent Color: Umber */
+}
+
+/* Footer styles */
+.footer {
+    background-color: #343A40; /* Text Color: Dark Gray */
+    color: #F6F1E1; /* Background Color: Ivory */
+    padding: 20px;
+    text-align: center;
+}

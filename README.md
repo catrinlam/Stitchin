@@ -486,4 +486,6 @@ You can fork this repository by using the following steps:
 
 ## Media
 
+- [Flaticon](https://www.flaticon.com/) - favicon design
+
 ## Acknowledgements
