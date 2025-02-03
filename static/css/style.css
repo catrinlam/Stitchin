@@ -1,73 +1,117 @@
+:root {
+    --primary-color: #ADC178; /* Olivine */
+    --secondary-color: #6C584C; /* Umber */ 
+    --accent-color: #A98467; /* Chamoisee */
+    --background-color: #F6F1E1; /* Ivory */
+    --text-color: #343A40; /* Dark Gray */
+}
 /* Base styles */
 body {
     font-family: 'Karla', sans-serif;
-    background-color: #F6F1E1; /* Background Color: Ivory */
-    color: #343A40; /* Text Color: Dark Gray */
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display SC', serif;
+    color: var(--secondary-color);
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #FFFFFF;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.navbar-brand:hover {
+    color: var(--secondary-color);
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.navbar-nav .nav-link.active{
+    color: var(--secondary-color);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color);
+}
+
+/* Site Tagline */
+.site-tagline {
+    color: var(--accent-color);
     font-family: 'Karla', sans-serif;
-    color: #6C584C; /* Accent Color: Umber */
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 5px;
 }
 
 /* Primary color */
 .primary-bg {
-    background-color: #ADC178; /* Primary Color: Olivine */
+    background-color: var(--primary-color);
 }
 
 .primary-text {
-    color: #ADC178; /* Primary Color: Olivine */
+    color: var(--primary-color);
 }
 
 /* Secondary color */
 .secondary-bg {
-    background-color: #A98467; /* Secondary Color: Chamoisee */
+    background-color: var(--secondary-color); 
 }
 
 .secondary-text {
-    color: #A98467; /* Secondary Color: Chamoisee */
+    color: var(--secondary-color); 
 }
 
 /* Accent color */
 .accent-bg {
-    background-color: #6C584C; /* Accent Color: Umber */
+    background-color: var(--accent-color); 
 }
 
 .accent-text {
-    color: #6C584C; /* Accent Color: Umber */
+    color: var(--accent-color); 
 }
 
 /* Button styles */
 .btn-primary {
-    background-color: #ADC178; /* Primary Color: Olivine */
-    color: #F6F1E1; /* Background Color: Ivory */
+    background-color: var(--primary-color);
+    color: var(--background-color);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
 
 .btn-primary:hover {
-    background-color: #A98467; /* Secondary Color: Chamoisee */
+    background-color: var(--secondary-color);
 }
 
 .btn-secondary {
-    background-color: #A98467; /* Secondary Color: Chamoisee */
-    color: #F6F1E1; /* Background Color: Ivory */
+    background-color: var(--secondary-color);
+    color: var(--background-color);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
 
 .btn-secondary:hover {
-    background-color: #6C584C; /* Accent Color: Umber */
+    background-color: var(--accent-color); 
 }
 
 /* Footer styles */
 .footer {
-    background-color: #343A40; /* Text Color: Dark Gray */
-    color: #F6F1E1; /* Background Color: Ivory */
+    background-color: var(--text-color);
+    color: var(--background-color);
     padding: 20px;
     text-align: center;
 }
