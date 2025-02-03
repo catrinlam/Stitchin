@@ -1,9 +1,9 @@
 :root {
     --primary-color: #ADC178; /* Olivine */
-    --secondary-color: #6C584C; /* Umber */ 
-    --accent-color: #A98467; /* Chamoisee */
-    --background-color: #F6F1E1; /* Ivory */
-    --text-color: #343A40; /* Dark Gray */
+    --secondary-color: #A98467; /* Chamoisee */ 
+    --accent-color: #C6D8A7; /* Parchment */
+    --background-color: #F0EAD2; /* Tea Green */
+    --text-color: #6C584C; /* Umber */
 }
 /* Base styles */
 body {
@@ -14,20 +14,26 @@ body {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
     font-family: 'Playfair Display SC', serif;
-    color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Karla', sans-serif;
+    color: var(--text-color);
 }
 
 /* Navigation Bar */
 .navbar {
-    background-color: #FFFFFF;
+    background-color: var(--primary-color);
 }
 
 .navbar-brand {
     font-family: 'Playfair Display SC', serif;
     font-size: 1.8rem;
-    color: var(--accent-color);
+    font-style: italic;
+    color: var(--text-color);
 }
 
 .navbar-brand:hover {
@@ -39,9 +45,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
 }
 
-.navbar-nav .nav-link.active{
+/* .navbar-nav .nav-link.active {
     color: var(--secondary-color);
-}
+} */
 
 .navbar-nav .nav-link:hover {
     color: var(--accent-color);
@@ -106,6 +112,61 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary:hover {
     background-color: var(--accent-color); 
+}
+
+/* Main content */
+.main-bg {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding-top: 30px; /* Adjust for fixed navbar */
+}
+
+/* Index Page Styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.card-text {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card a.post-link {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.card a.post-link:hover {
+    color: var(--accent-color);
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item .page-link {
+    color: var(--text-color);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 /* Footer styles */
