@@ -69,12 +69,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="m-0 text-white">© 2024 Stitchin</p>
+                    <p class="m-0 text-white">© {% now "Y" %} Stitchin</p>
                     <p class="m-0 text-white">Made by Catrin Lam</p>
                     <p class="m-0 text-white">
                         <a href="{% url 'home' %}" class="text-white">Patterns</a> |
                         <a href="#" class="text-white">About Me</a>
                     </p>
+                </div>
+                <div class="col-12 text-center mt-2">
                     <p class="m-0 text-white">Follow us:
                         <a href="https://www.facebook.com" class="text-white"><i class="fab fa-facebook-square ms-3"></i></a>
                         <a href="https://www.twitter.com" class="text-white"><i class="fab fa-twitter-square ms-3"></i></a>
@@ -82,25 +84,6 @@
                         <a href="https://www.youtube.com" class="text-white"><i class="fab fa-youtube-square ms-3"></i></a>
                     </p>
                 </div>
-                {% comment %} <div class="col-md-6 text-center text-md-start"> {% endcomment %}
-                    {% comment %} <p class="m-0 text-white">© 2024 Stitchin</p>
-                <div class="col-12 text-center">
-                    <p class="m-0 text-white">Made by Catrin Lam</p>
-                    <p class="m-0 text-white">
-                        <a href="{% url 'home' %}" class="text-white">Patterns</a> |
-                        <a href="#" class="text-white">About Me</a>
-                    </p>
-                </div> {% endcomment %}
-                {% comment %} <div class="col-md-6 text-center text-md-end"> {% endcomment %}
-                {% comment %} <div class="col-12 text-center mt-2">
-                    <p class="m-0 text-white">Follow us:</p>
-                    <p class="m-0 text-white">
-                        <a href="https://www.facebook.com" class="text-white"><i class="fab fa-facebook-square ms-3"></i></a>
-                        <a href="https://www.twitter.com" class="text-white"><i class="fab fa-twitter-square ms-3"></i></a>
-                        <a href="https://www.instagram.com" class="text-white"><i class="fab fa-instagram-square ms-3"></i></a>
-                        <a href="https://www.youtube.com" class="text-white"><i class="fab fa-youtube-square ms-3"></i></a>
-                    </p>
-                </div> {% endcomment %}
             </div>
         </div>
     </footer>
