@@ -170,6 +170,33 @@ h2, h3, h4, h5, h6 {
     border-color: var(--secondary-color);
 }
 
+/* Pattern Details styles */
+.pattern-details {
+    margin-top: 20px;
+}
+
+.pattern-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pattern-details h3 {
+    margin-top: 20px;
+    color: var(--secondary-color);
+}
+
+.pattern-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pattern-details ul li {
+    margin-bottom: 15px;
+}
+
 /* Footer styles */
 .footer {
     background-color: var(--text-color);
