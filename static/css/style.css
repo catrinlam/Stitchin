@@ -1,6 +1,7 @@
 :root {
     --primary-color: #ADC178; /* Olivine */
-    --secondary-color: #A97954; /* Chamoisee */ 
+    --secondary-color: #A97954; /* Chamoisee */
+    --dark-green-color: #556B2F; /* Dark Olive Green */
     --accent-color: #C6D8A7; /* Parchment */
     --background-color: #F0EAD2; /* Tea Green */
     --text-color: #6C584C; /* Umber */
@@ -160,7 +161,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .pagination .page-item.active .page-link {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     border-color: var(--primary-color);
 }
 
