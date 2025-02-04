@@ -99,6 +99,7 @@ class Pattern(models.Model):
         User, on_delete=models.CASCADE, related_name="patterns"
     )
     title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField()
     difficulty_level = models.IntegerField(choices=DIFFICULTY_LEVEL)
     craft = models.IntegerField(choices=CRAFT)
