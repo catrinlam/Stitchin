@@ -98,7 +98,7 @@ class Pattern(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="patterns"
     )
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField()
     difficulty_level = models.IntegerField(choices=DIFFICULTY_LEVEL)

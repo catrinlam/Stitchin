@@ -119,7 +119,8 @@ h2, h3, h4, h5, h6 {
 .main-bg {
     background-color: var(--background-color);
     color: var(--text-color);
-    padding-top: 30px; /* Adjust for fixed navbar */
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 /* Index Page Styles */

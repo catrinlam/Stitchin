@@ -8,7 +8,7 @@ class PatternHooksNeedleInline(admin.TabularInline):
 
 @admin.register(Pattern)
 class PatternAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'author', 'difficulty_level', 'craft', 'yarn_weight', 'created_at')
+    list_display = ('title', 'slug', 'author', 'difficulty_level', 'craft', 'yarn_weight', 'created_at')
     search_fields = ('title', 'author__username')
     list_filter = ('difficulty_level', 'craft', 'yarn_weight', 'size', 'category')
     prepopulated_fields = {'slug': ('title',)}
