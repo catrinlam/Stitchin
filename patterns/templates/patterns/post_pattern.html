@@ -7,6 +7,24 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        <h3>Hooks and Needles</h3>
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="form-row">
+                <div class="col">
+                    {{ form.type.label_tag }} {{ form.type }}
+                </div>
+                <div class="col">
+                    {{ form.hook_size.label_tag }} {{ form.hook_size }}
+                </div>
+                <div class="col">
+                    {{ form.needle_size.label_tag }} {{ form.needle_size }}
+                </div>
+                <div class="col">
+                    {{ form.DELETE.label_tag }} {{ form.DELETE }}
+                </div>
+            </div>
+        {% endfor %}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

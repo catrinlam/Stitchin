@@ -120,7 +120,7 @@ h2, h3, h4, h5, h6 {
     background-color: var(--background-color);
     color: var(--text-color);
     padding-top: 20px;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
 }
 
 /* Index Page Styles */
@@ -176,6 +176,10 @@ h2, h3, h4, h5, h6 {
     margin-top: 20px;
 }
 
+.text-mb {
+    margin-bottom: auto;
+}
+
 .pattern-image {
     max-width: 100%;
     height: auto;
@@ -196,6 +200,31 @@ h2, h3, h4, h5, h6 {
 
 .pattern-details ul li {
     margin-bottom: 15px;
+}
+
+.pattern-details table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.pattern-details table th,
+.pattern-details table td {
+    padding: 10px;
+    border: none;
+    background-color: var(--background-color);
+}
+
+.pattern-details table th {
+    width: 20%;
+    text-align: left;
+    color: var(--secondary-color);
+}
+
+.pattern-details table td {
+    width: 80%;
+    text-align: left;
+    color: var(--text-color);
 }
 
 /* Footer styles */
