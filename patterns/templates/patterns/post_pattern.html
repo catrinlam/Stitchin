@@ -49,7 +49,7 @@
         console.log(totalForms);
 
         addFormsetButton.addEventListener('click', function() {
-            const currentFormCount = formsetContainer.children.length;
+            const currentFormCount = {{ formset.total_form_count }};
             const newForm = formsetContainer.children[0].cloneNode(true);
             const formRegex = RegExp(`patternhooksneedle_set-(\\d){1}-`, 'g');
 
