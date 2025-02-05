@@ -243,7 +243,7 @@ h2, h3, h4, h5, h6 {
 }
 
 /* Post Pattern styling */
-.form-group {
+/* .form-group {
     margin-bottom: 1rem;
 }
 
@@ -269,7 +269,7 @@ h2, h3, h4, h5, h6 {
     border-color: var(--secondary-color);
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(169, 121, 84, 0.25);
-}
+} */
 
 /* Form Styles */
 form {

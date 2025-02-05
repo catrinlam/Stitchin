@@ -10,41 +10,73 @@
             <div class="form-row mb-3">
                 <div class="col">
                     <div class="form-group">
-                        {{ form.title.label_tag }} {{ form.title }}
+                        {{ form.title.label_tag }} 
+                        {% if form.title.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %} 
+                        {{ form.title }}
                     </div>
                 </div>
             </div>
             <div class="form-row mb-3">
                 <div class="col">
                     <div class="form-group">
-                        {{ form.description.label_tag }} {{ form.description }}
+                        {{ form.description.label_tag }}
+                        {% if form.description.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.description }}
                     </div>
                 </div>
             </div>
             <div class="form-row mb-3">
                 <div class="col">
                     <div class="form-group">
-                        {{ form.difficulty_level.label_tag }} {{ form.difficulty_level }}
+                        {{ form.difficulty_level.label_tag }}
+                        {% if form.difficulty_level.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.difficulty_level }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.craft.label_tag }}
+                        {% if form.craft.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.craft }}
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        {{ form.craft.label_tag }} {{ form.craft }}
+                        {{ form.yarn_weight.label_tag }}
+                        {% if form.yarn_weight.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.yarn_weight }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.size.label_tag }}
+                        {% if form.size.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.size }}
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        {{ form.yarn_weight.label_tag }} {{ form.yarn_weight }}
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.size.label_tag }} {{ form.size }}
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.category.label_tag }} {{ form.category }}
+                        {{ form.category.label_tag }}
+                        {% if form.category.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.category }}
                     </div>
                 </div>
             </div>
