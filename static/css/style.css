@@ -93,7 +93,7 @@ h2, h3, h4, h5, h6 {
 /* Button styles */
 .btn-primary {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: var(--text-color);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
@@ -271,8 +271,8 @@ h2, h3, h4, h5, h6 {
     box-shadow: 0 0 0 0.2rem rgba(169, 121, 84, 0.25);
 } */
 
-/* Form Styles */
-form {
+/* Post Pattern Styles */
+.pattern-form {
     background: white;
     padding: 20px;
     border-radius: 10px;
