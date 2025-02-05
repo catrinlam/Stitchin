@@ -9,23 +9,63 @@
         {{ form.as_p }}
         <h3>Hooks and Needles</h3>
         {{ formset.management_form }}
-        {% for form in formset %}
-            <div class="form-row">
-                <div class="col">
-                    {{ form.type.label_tag }} {{ form.type }}
+        <div id="formset-container">
+            {% for form in formset %}
+                <div class="form-row">
+                    <div class="col">
+                        {{ form.type.label_tag }} {{ form.type }}
+                    </div>
+                    <div class="col">
+                        {{ form.hook_size.label_tag }} {{ form.hook_size }}
+                    </div>
+                    <div class="col">
+                        {{ form.needle_size.label_tag }} {{ form.needle_size }}
+                    </div>
+                    <div class="col">
+                        {{ form.DELETE.label_tag }} {{ form.DELETE }}
+                    </div>
                 </div>
-                <div class="col">
-                    {{ form.hook_size.label_tag }} {{ form.hook_size }}
-                </div>
-                <div class="col">
-                    {{ form.needle_size.label_tag }} {{ form.needle_size }}
-                </div>
-                <div class="col">
-                    {{ form.DELETE.label_tag }} {{ form.DELETE }}
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+        <button type="button" class="btn btn-secondary" id="add-formset">Add Hook/Needle</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formsetContainer = document.getElementById('formset-container');
+        const addFormsetButton = document.getElementById('add-formset');
+        const totalFormsInput = document.querySelector('[name="patternhooksneedle_set-TOTAL_FORMS"]');
+    
+        if (!formsetContainer || !addFormsetButton || !totalFormsInput) {
+            console.error("Formset elements not found.");
+            return;
+        }
+    
+        addFormsetButton.addEventListener('click', function() {
+            const currentFormCount = parseInt(totalFormsInput.value, 10);
+            const newForm = formsetContainer.children[0].cloneNode(true);
+            const formRegex = /patternhooksneedle_set-(\d+)-/g;
+    
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `patternhooksneedle_set-${currentFormCount}-`);
+            
+            // Clear input values
+            newForm.querySelectorAll('input, select').forEach(input => {
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+    
+            formsetContainer.appendChild(newForm);
+            totalFormsInput.value = currentFormCount + 1;
+        });
+    });
+    
+    
+</script>
 {% endblock %}

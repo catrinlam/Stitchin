@@ -21,14 +21,13 @@ def pattern_detail(request, slug):
 
     **Template:**
 
-    :template:`pattern/pattern_detail.html`
+    :template:`patterns/pattern_detail.html`
     """
     pattern = get_object_or_404(Pattern, slug=slug)
     hooks_needles = pattern.pattern_hooks_needles.all()
-
-    # Determine whether needles or hooks exist
-    needle_displayed = any(hn.needle_size for hn in hooks_needles)
-    hook_displayed = any(hn.hook_size for hn in hooks_needles)
+    
+    needle_displayed = any(hn.needle_size is not None for hn in hooks_needles)
+    hook_displayed = any(hn.hook_size is not None for hn in hooks_needles)
 
     context = {
         'pattern': pattern,
@@ -41,6 +40,8 @@ def pattern_detail(request, slug):
     # queryset = Pattern.objects.all()
     # pattern = get_object_or_404(queryset, slug=slug)
     # hooks_needles = PatternHooksNeedle.objects.filter(pattern=pattern)
+    
+    # print(hooks_needles.values())
 
     # return render(
     #     request,

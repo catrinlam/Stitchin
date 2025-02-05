@@ -124,9 +124,9 @@ class PatternHooksNeedle(models.Model):
     needle_size = models.IntegerField(
         choices=NEEDLE_SIZE, blank=True, null=True)
 
-    # def __str__(self):
-    #     type_display = dict(HOOK_NEEDLE_TYPE).get(self.type, "Unknown")
-    #     return f"{type_display} for {self.pattern.title} by {self.pattern.author.username}"
+    def __str__(self):
+        type_display = dict(HOOK_NEEDLE_TYPE).get(self.type, "Unknown")
+        return f"{type_display} for {self.pattern.title} by {self.pattern.author.username}"
 
 
 class Library(models.Model):

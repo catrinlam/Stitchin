@@ -44,12 +44,27 @@
                             <th>Category</th>
                             <td>{{ pattern.get_category_display }}</td>
                         </tr>
+                        
+                            {% comment %} {% for hook_needle in hooks_needles%}
+                                <tr>
+                                    <th>{{ hook_needle.get_type_display }}</th>
+                                {% if hook_needle.get_hook_size_display %}
+                                    <td> {{ hook_needle.get_hook_size_display }}</td>
+                                {% endif %}
+                                {% if hook_needle.get_needle_size_display %}
+                                    <td> {{ hook_needle.get_needle_size_display }}</td>
+                                {% endif %}
+                                </tr>
+                            {% endfor %} {% endcomment %}
+
+
+                        
                         {% if needle_displayed %}
                             <tr>
                                 <th>Needle Size</th>
                                 <td>
                                     {% for hook_needle in hooks_needles %}
-                                        {% if hook_needle.needle_size %}
+                                        {% if hook_needle.get_needle_size_display %}
                                             {{ hook_needle.get_needle_size_display }}{% if not forloop.last %}<br>{% endif %}
                                         {% endif %}
                                     {% endfor %}
@@ -61,7 +76,7 @@
                                 <th>Hook Size</th>
                                 <td>
                                     {% for hook_needle in hooks_needles %}
-                                        {% if hook_needle.hook_size %}
+                                        {% if hook_needle.get_hook_size_display %}
                                             {{ hook_needle.get_hook_size_display }}{% if not forloop.last %}<br>{% endif %}
                                         {% endif %}
                                     {% endfor %}

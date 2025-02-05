@@ -26,6 +26,7 @@ class PatternHooksNeedleForm(forms.ModelForm):
         model = PatternHooksNeedle
         fields = ['type', 'hook_size', 'needle_size']
 
+
 PatternHooksNeedleFormSet = inlineformset_factory(
-    Pattern, PatternHooksNeedle, form=PatternHooksNeedleForm, extra=1, can_delete=True
+    Pattern, PatternHooksNeedle, fields=('type', 'hook_size', 'needle_size'), extra=1, can_delete=True
 )
