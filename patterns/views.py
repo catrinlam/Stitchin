@@ -25,7 +25,7 @@ def pattern_detail(request, slug):
     """
     pattern = get_object_or_404(Pattern, slug=slug)
     hooks_needles = pattern.pattern_hooks_needles.all()
-    
+        
     needle_displayed = any(hn.needle_size is not None for hn in hooks_needles)
     hook_displayed = any(hn.hook_size is not None for hn in hooks_needles)
 

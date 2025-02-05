@@ -3,33 +3,72 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="display-4">Post a New Pattern</h1>
-    <form method="post" enctype="multipart/form-data">
+    <h1 class="display-4 text-center">Post a New Pattern</h1>
+    <form method="post" enctype="multipart/form-data" class="mt-4 mb-4">
         {% csrf_token %}
-        {{ form.as_p }}
-        <h3>Hooks and Needles</h3>
+        <div class="mb-3">
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.title.label_tag }} {{ form.title }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.description.label_tag }} {{ form.description }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.difficulty_level.label_tag }} {{ form.difficulty_level }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.craft.label_tag }} {{ form.craft }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.yarn_weight.label_tag }} {{ form.yarn_weight }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.size.label_tag }} {{ form.size }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="mt-4">Hooks and Needles</h4>
         {{ formset.management_form }}
-        <div id="formset-container">
+        <div id="hooks-needles-formset" class="mb-3">
             {% for form in formset %}
-                <div class="form-row">
+                <div class="form-row mb-3">
                     <div class="col">
-                        {{ form.type.label_tag }} {{ form.type }}
+                        <div class="form-group">
+                            {{ form.type.label_tag }} {{ form.type }}
+                        </div>
                     </div>
                     <div class="col">
-                        {{ form.hook_size.label_tag }} {{ form.hook_size }}
+                        <div class="form-group">
+                            {{ form.hook_size.label_tag }} {{ form.hook_size }}
+                        </div>
                     </div>
                     <div class="col">
-                        {{ form.needle_size.label_tag }} {{ form.needle_size }}
-                    </div>
-                    <div class="col">
-                        {{ form.DELETE.label_tag }} {{ form.DELETE }}
+                        <div class="form-group">
+                            {{ form.needle_size.label_tag }} {{ form.needle_size }}
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
-        <p>Total forms: <span id="total-forms-display">{{ formset.total_form_count }}</span></p>
-        <button type="button" class="btn btn-secondary" id="add-formset">Add Hook/Needle</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary mb-3" id="add-formset">Add Hook/Needle</button>
+        <button type="submit" class="btn btn-primary mb-3">Submit</button>
     </form>
 </div>
 {% endblock %}
@@ -37,10 +76,9 @@
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const formsetContainer = document.getElementById('formset-container');
+        const formsetContainer = document.getElementById('hooks-needles-formset');
         const addFormsetButton = document.getElementById('add-formset');
         const totalForms = document.getElementById('id_pattern_hooks_needles-TOTAL_FORMS');
-        const totalFormsDisplay = document.getElementById('total-forms-display');
         let formCount = {{ formset.total_form_count }};
 
         addFormsetButton.addEventListener('click', function() {
@@ -51,10 +89,31 @@
             newForm.innerHTML = newForm.innerHTML.replace(formRegex, `pattern_hooks_needles-${formCount}-`);
             formsetContainer.appendChild(newForm);
             totalForms.setAttribute('value', formCount + 1);
-            totalFormsDisplay.textContent = formCount + 1;
+
+            // Add a delete button to the new form
+            const deleteButton = document.createElement('button');
+            deleteButton.type = 'button';
+            deleteButton.className = 'btn btn-danger remove-form mt-2';
+            deleteButton.textContent = 'Remove';
+            deleteButton.addEventListener('click', function() {
+                newForm.remove();
+                formCount--;
+                totalForms.setAttribute('value', formCount);
+            });
+            newForm.appendChild(deleteButton);
+
+            formsetContainer.appendChild(newForm);
+            totalForms.setAttribute('value', formCount);
+        });
+
+        // Add delete functionality to existing forms
+        document.querySelectorAll('.remove-form').forEach(button => {
+            button.addEventListener('click', function() {
+                button.closest('.form-row').remove();
+                formCount--;
+                totalForms.setAttribute('value', formCount);
+            });
         });
     });
-    
-    
 </script>
 {% endblock %}
