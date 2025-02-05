@@ -54,7 +54,6 @@ def post_pattern(request):
         form = PatternForm(request.POST, request.FILES)
         formset = PatternHooksNeedleFormSet(request.POST)
         
-        print(f'formset: {formset}')
         if form.is_valid() and formset.is_valid():
             try:
                 pattern = form.save(commit=False)

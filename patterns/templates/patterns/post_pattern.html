@@ -39,24 +39,19 @@
     document.addEventListener('DOMContentLoaded', function() {
         const formsetContainer = document.getElementById('formset-container');
         const addFormsetButton = document.getElementById('add-formset');
-        const totalForms = document.getElementById('id_patternhooksneedle_set-TOTAL_FORMS');
+        const totalForms = document.getElementById('id_pattern_hooks_needles-TOTAL_FORMS');
         const totalFormsDisplay = document.getElementById('total-forms-display');
-
-        let currentFormCount = {{ formset.total_form_count }};
-
-        console.log(totalFormsDisplay);
-        console.log(currentFormCount);
-        console.log(totalForms);
+        let formCount = {{ formset.total_form_count }};
 
         addFormsetButton.addEventListener('click', function() {
-            const currentFormCount = {{ formset.total_form_count }};
             const newForm = formsetContainer.children[0].cloneNode(true);
-            const formRegex = RegExp(`patternhooksneedle_set-(\\d){1}-`, 'g');
+            const formRegex = RegExp(`pattern_hooks_needles-(\\d){1}-`, 'g');
 
-            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `patternhooksneedle_set-${currentFormCount}-`);
+            formCount++;
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `pattern_hooks_needles-${formCount}-`);
             formsetContainer.appendChild(newForm);
-            totalForms.setAttribute('value', currentFormCount + 1);
-            totalFormsDisplay.textContent = currentFormCount + 1;
+            totalForms.setAttribute('value', formCount + 1);
+            totalFormsDisplay.textContent = formCount + 1;
         });
     });
     
