@@ -27,6 +27,7 @@
                 </div>
             {% endfor %}
         </div>
+        <p>Total forms: <span id="total-forms-display">{{ formset.total_form_count }}</span></p>
         <button type="button" class="btn btn-secondary" id="add-formset">Add Hook/Needle</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -39,6 +40,13 @@
         const formsetContainer = document.getElementById('formset-container');
         const addFormsetButton = document.getElementById('add-formset');
         const totalForms = document.getElementById('id_patternhooksneedle_set-TOTAL_FORMS');
+        const totalFormsDisplay = document.getElementById('total-forms-display');
+
+        let currentFormCount = {{ formset.total_form_count }};
+
+        console.log(totalFormsDisplay);
+        console.log(currentFormCount);
+        console.log(totalForms);
 
         addFormsetButton.addEventListener('click', function() {
             const currentFormCount = formsetContainer.children.length;
@@ -48,8 +56,10 @@
             newForm.innerHTML = newForm.innerHTML.replace(formRegex, `patternhooksneedle_set-${currentFormCount}-`);
             formsetContainer.appendChild(newForm);
             totalForms.setAttribute('value', currentFormCount + 1);
+            totalFormsDisplay.textContent = currentFormCount + 1;
         });
     });
+    
     
 </script>
 {% endblock %}

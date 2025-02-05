@@ -53,6 +53,8 @@ def post_pattern(request):
     if request.method == "POST":
         form = PatternForm(request.POST, request.FILES)
         formset = PatternHooksNeedleFormSet(request.POST)
+        
+        print(f'formset: {formset}')
         if form.is_valid() and formset.is_valid():
             try:
                 pattern = form.save(commit=False)
@@ -62,8 +64,6 @@ def post_pattern(request):
                 formset.save()
                 messages.success(request, "Pattern posted successfully!")
                 return redirect('pattern_detail', slug=pattern.slug)
-            except IntegrityError:
-                messages.error(request, "A pattern with this title already exists. Please choose a different title.")
             except Exception as e:
                 messages.error(request, f"Error posting pattern: {e}")
         else:
