@@ -42,6 +42,11 @@
                         {{ form.size.label_tag }} {{ form.size }}
                     </div>
                 </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.category.label_tag }} {{ form.category }}
+                    </div>
+                </div>
             </div>
         </div>
         <h4 class="mt-4">Hooks and Needles</h4>
@@ -82,13 +87,16 @@
         let formCount = {{ formset.total_form_count }};
 
         addFormsetButton.addEventListener('click', function() {
+            let currentFormCount = formsetContainer.children.length;
             const newForm = formsetContainer.children[0].cloneNode(true);
             const formRegex = RegExp(`pattern_hooks_needles-(\\d){1}-`, 'g');
 
             formCount++;
-            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `pattern_hooks_needles-${formCount}-`);
+
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `pattern_hooks_needles-${currentFormCount}-`);
             formsetContainer.appendChild(newForm);
             totalForms.setAttribute('value', formCount + 1);
+            currentFormCount++;
 
             // Add a delete button to the new form
             const deleteButton = document.createElement('button');
