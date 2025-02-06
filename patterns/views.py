@@ -29,22 +29,36 @@ def pattern_detail(request, slug):
         
     needle_displayed = any(hn.needle_size is not None for hn in hooks_needles)
     hook_displayed = any(hn.hook_size is not None for hn in hooks_needles)
+    
+    library_patterns = []
+    if request.user.is_authenticated:
+        library = Library.objects.get(user=request.user)
+        library_patterns = library.pattern.all()
 
     context = {
         'pattern': pattern,
         'hooks_needles': hooks_needles,
         'needle_displayed': needle_displayed,
         'hook_displayed': hook_displayed,
+        'library_patterns': library_patterns,
     }
     return render(request, 'patterns/pattern_detail.html', context)
 
+
 @login_required
-def add_to_library(request, slug):
+def toggle_library(request, slug):
     pattern = get_object_or_404(Pattern, slug=slug)
     library = Library.objects.get(user=request.user)
-    library.pattern.add(pattern)
-    messages.success(request, "Pattern added to your library.")
-    return redirect('pattern_detail', slug)
+    
+    if library.pattern.filter(id=pattern.id).exists():
+        library.pattern.remove(pattern)
+        # messages.success(request, "Pattern removed from your library.")
+    else:
+        library.pattern.add(pattern)
+        # messages.success(request, "Pattern added to your library.")
+    
+    return redirect('pattern_detail', slug=slug)
+
 
 @login_required
 def post_pattern(request):
@@ -69,6 +83,7 @@ def post_pattern(request):
         form = PatternForm()
         formset = PatternHooksNeedleFormSet()
     return render(request, 'patterns/post_pattern.html', {'form': form, 'formset': formset})
+
 
 @login_required
 def library_view(request):

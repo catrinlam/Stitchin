@@ -1,11 +1,29 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}{{ pattern.title }}{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="display-4">{{ pattern.title }}</h1>
+            <div class="d-flex flex-column flex-sm-row justify-content-between">
+                <h1 class="display-4">{{ pattern.title }}</h1>
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'toggle_library' pattern.slug %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">
+                        {% if pattern in library_patterns %}
+                            <i class="fa-solid fa-heart"></i> In your Library
+                        {% else %}
+                            <i class="fa-regular fa-heart"></i> Add to Library
+                        {% endif %}
+                    </button>
+                </form>
+                {% else %}
+                <p><a href="{% url 'account_login' %}">Log in</a> to add this pattern to your library.</p>
+                {% endif %}
+            </div>
             <div class="d-flex justify-content-between">
                 <p class="text-muted text-mb">by {{ pattern.author.username }}</p>
                 <p class="text-muted text-mb">{{ pattern.created_at|date:"F j, Y" }}</p>
@@ -69,14 +87,6 @@
                             </tr>
                         {% endif %}
                     </table>
-                    {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'add_to_library' pattern.slug %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Add to Library</button>
-                    </form>
-                    {% else %}
-                        <p><a href="{% url 'account_login' %}">Log in</a> to add this pattern to your library.</p>
-                    {% endif %}
                 </div>
             </div>
         </div>
