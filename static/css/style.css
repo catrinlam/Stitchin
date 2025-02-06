@@ -312,6 +312,17 @@ h2, h3, h4, h5, h6 {
     margin-top: 10px;
 }
 
+/* Auth Pages Styles */
+.login, .signup, .password-reset {
+    max-width: fit-content;
+}
+
+.login input{
+    width: auto;
+}
+
+/* Profile Page Styles */
+
 /* Footer styles */
 .footer {
     background-color: var(--text-color);
