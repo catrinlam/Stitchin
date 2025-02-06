@@ -95,8 +95,6 @@
                         <div class="form-group">
                             {{ form.hook_size.label_tag }} {{ form.hook_size }}
                         </div>
-                    </div>
-                    <div class="col">
                         <div class="form-group">
                             {{ form.needle_size.label_tag }} {{ form.needle_size }}
                         </div>
@@ -104,6 +102,7 @@
                 </div>
             {% endfor %}
         </div>
+        
         <button type="button" class="btn btn-secondary mb-3" id="add-formset">Add Hook/Needle</button>
         <button type="submit" class="btn btn-primary mb-3">Submit</button>
     </form>
@@ -113,6 +112,31 @@
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        function toggleSizeFields(row) {
+            const typeField = row.querySelector('[name*="type"]');
+            const hookSizeField = row.querySelector('[name*="hook_size"]').closest('.form-group');
+            const needleSizeField = row.querySelector('[name*="needle_size"]').closest('.form-group');
+
+            function updateVisibility() {
+                console.log(typeField.value);
+                if (typeField.value === '0') {
+                    hookSizeField.style.display = 'block';
+                    needleSizeField.style.display = 'none';
+                } else if (typeField.value === '1') {
+                    hookSizeField.style.display = 'none';
+                    needleSizeField.style.display = 'block';
+                } else {
+                    hookSizeField.style.display = 'none';
+                    needleSizeField.style.display = 'none';
+                }
+            }
+
+            updateVisibility();
+            typeField.addEventListener('change', updateVisibility);
+        }
+
+        document.querySelectorAll('#hooks-needles-formset .form-row').forEach(toggleSizeFields);
+
         const formsetContainer = document.getElementById('hooks-needles-formset');
         const addFormsetButton = document.getElementById('add-formset');
         const totalForms = document.getElementById('id_pattern_hooks_needles-TOTAL_FORMS');
@@ -129,6 +153,8 @@
             formsetContainer.appendChild(newForm);
             totalForms.setAttribute('value', formCount + 1);
             currentFormCount++;
+
+            toggleSizeFields(newForm);
 
             // Add a delete button to the new form
             const deleteButton = document.createElement('button');
