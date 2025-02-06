@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.db import IntegrityError
-from .models import Pattern, PatternHooksNeedle
+from django.contrib.auth.decorators import login_required
+from .models import Pattern, PatternHooksNeedle, Library
 from .forms import PatternForm, PatternHooksNeedleFormSet
 
 class PatternList(generic.ListView):
@@ -37,18 +38,8 @@ def pattern_detail(request, slug):
     }
     return render(request, 'patterns/pattern_detail.html', context)
 
-    # queryset = Pattern.objects.all()
-    # pattern = get_object_or_404(queryset, slug=slug)
-    # hooks_needles = PatternHooksNeedle.objects.filter(pattern=pattern)
-    
-    # print(hooks_needles.values())
 
-    # return render(
-    #     request,
-    #     "patterns/pattern_detail.html",
-    #     {"pattern": pattern, "hooks_needles": hooks_needles},
-    # )
-
+@login_required
 def post_pattern(request):
     if request.method == "POST":
         form = PatternForm(request.POST, request.FILES)
@@ -71,3 +62,12 @@ def post_pattern(request):
         form = PatternForm()
         formset = PatternHooksNeedleFormSet()
     return render(request, 'patterns/post_pattern.html', {'form': form, 'formset': formset})
+
+
+@login_required
+def add_to_library(request, slug):
+    pattern = get_object_or_404(Pattern, slug=slug)
+    library = Library.objects.get(user=request.user)
+    library.pattern.add(pattern)
+    messages.success(request, "Pattern added to your library.")
+    return redirect('pattern_detail', slug)

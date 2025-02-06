@@ -44,21 +44,6 @@
                             <th>Category</th>
                             <td>{{ pattern.get_category_display }}</td>
                         </tr>
-                        
-                            {% comment %} {% for hook_needle in hooks_needles%}
-                                <tr>
-                                    <th>{{ hook_needle.get_type_display }}</th>
-                                {% if hook_needle.get_hook_size_display %}
-                                    <td> {{ hook_needle.get_hook_size_display }}</td>
-                                {% endif %}
-                                {% if hook_needle.get_needle_size_display %}
-                                    <td> {{ hook_needle.get_needle_size_display }}</td>
-                                {% endif %}
-                                </tr>
-                            {% endfor %} {% endcomment %}
-
-
-                        
                         {% if needle_displayed %}
                             <tr>
                                 <th>Needle Size</th>
@@ -84,6 +69,14 @@
                             </tr>
                         {% endif %}
                     </table>
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'add_to_library' pattern.slug %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Add to Library</button>
+                    </form>
+                    {% else %}
+                        <p><a href="{% url 'account_login' %}">Log in</a> to add this pattern to your library.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

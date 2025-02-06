@@ -132,7 +132,7 @@ class PatternHooksNeedle(models.Model):
 class Library(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="libraries")
-    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE, blank=True, null=True)
+    pattern = models.ManyToManyField(Pattern, blank=True, related_name="libraries")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
