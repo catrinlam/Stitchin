@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}My Library{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="display-4 text-center">My Library</h1>
+    <div class="row mt-5">
+        {% if patterns %}
+            {% for pattern in patterns %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'pattern_detail' pattern.slug %}" class="post-link">
+                                <h2 class="card-title">{{ pattern.title }}</h2>
+                            </a>
+                            <hr />
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text text-muted h6">
+                                    {{ pattern.author.username }}
+                                </p>
+                                <p class="card-text text-muted h6">
+                                    {{ pattern.created_at|date:"F j, Y" }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <p class="text-center">You have no patterns in your library.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

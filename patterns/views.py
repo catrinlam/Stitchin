@@ -38,6 +38,13 @@ def pattern_detail(request, slug):
     }
     return render(request, 'patterns/pattern_detail.html', context)
 
+@login_required
+def add_to_library(request, slug):
+    pattern = get_object_or_404(Pattern, slug=slug)
+    library = Library.objects.get(user=request.user)
+    library.pattern.add(pattern)
+    messages.success(request, "Pattern added to your library.")
+    return redirect('pattern_detail', slug)
 
 @login_required
 def post_pattern(request):
@@ -63,11 +70,9 @@ def post_pattern(request):
         formset = PatternHooksNeedleFormSet()
     return render(request, 'patterns/post_pattern.html', {'form': form, 'formset': formset})
 
-
 @login_required
-def add_to_library(request, slug):
-    pattern = get_object_or_404(Pattern, slug=slug)
+def library_view(request):
     library = Library.objects.get(user=request.user)
-    library.pattern.add(pattern)
-    messages.success(request, "Pattern added to your library.")
-    return redirect('pattern_detail', slug)
+    patterns = library.pattern.all()
+    return render(request, 'library/library.html', {'patterns': patterns})
+
