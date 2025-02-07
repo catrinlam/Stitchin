@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Stitchin is a Django-based web application for users to share their knitting and crochet patterns. Other users can like and comment on these patterns, and add the pattern to their library so they can use the pattern later.
+Stitchin is a Django-based web application for users to share their knitting and crochet patterns. Other users can like and comment on these patterns, and add the pattern to their favourite so they can use the pattern later.
 
 Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
 
@@ -23,7 +23,7 @@ Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
     - [Visitor User Stories](#visitor-user-stories)
     - [User Profile](#user-profile)
     - [Pattern](#pattern)
-    - [Library](#library)
+    - [Favourite](#favourite)
     - [Comments](#comments)
     - [Visit Us/Reviews](#visit-usreviews)
   - [Skeleton](#skeleton)
@@ -36,7 +36,7 @@ Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
   - [Feature Showcase](#feature-showcase)
   - [Future Features](#future-features)
 - [Technologies \& Languages Used](#technologies--languages-used)
-  - [Libraries \& Frameworks](#libraries--frameworks)
+  - [Libraries \& Frameworks](libraries--frameworks)
   - [Tools \& Programs](#tools--programs)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -66,7 +66,7 @@ Stitchin is a platform designed for users to share their patterns with the commu
 - Registered users can:
   - Upload their patterns
   - Comment on other users' patterns
-  - Add patterns to their own library
+  - Add patterns to their own favourite
 - Unregistered users can:
   - View the site
   - Browse through the available patterns
@@ -156,14 +156,14 @@ Link to User Stories in GitHub Projects: [GitHub Projects Kanban Board](https://
 | As a **user**, I can **filter out in the search bar** so that I can **narrow down the patterns based on criteria**. | SHOULD HAVE |
 | As a **logged in user**, I can **like/unlike a pattern** so that I can **show my appreciation for it**. | COULD HAVE |
 
-### Library
+### Favourite
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **logged in user**, I can **add the pattern to my library** so that I can **easily access it later**. | MUST HAVE |
-| As a **logged in user**, I can **remove a pattern from my library** so that I can **manage my saved patterns**. | MUST HAVE |
-| As a **logged in user**, I can **create collections in my library** so that I can **organize my patterns**. | COULD HAVE |
-| As a **logged in user**, I can **see notifications when I add or remove a pattern from my library** so that I am **informed of the changes**. | SHOULD HAVE |
+| As a **logged in user**, I can **add the pattern to my favourite** so that I can **easily access it later**. | MUST HAVE |
+| As a **logged in user**, I can **remove a pattern from my favourite** so that I can **manage my saved patterns**. | MUST HAVE |
+| As a **logged in user**, I can **create collections in my favourite** so that I can **organize my patterns**. | COULD HAVE |
+| As a **logged in user**, I can **see notifications when I add or remove a pattern from my favourite** so that I am **informed of the changes**. | SHOULD HAVE |
 
 ### Comments
 
@@ -207,9 +207,9 @@ The wireframes for Stitchin were created using Balsamiq. They include views for 
   - The upload pattern page enables users to upload new patterns to the platform.
   ![Upload Pattern Page](docs/wireframes/upload-pattern.png)
 
-- **Library Page**
-  - The library page shows the patterns saved by the user in their personal library.
-  ![Library Page](docs/wireframes/library.png)
+- **Favourite Page**
+  - The favourite page shows the patterns saved by the user in their personal favourite.
+  ![Favourite Page](docs/wireframes/favourite.png)
 
 - **About Us/Reviews Page**
   - The About Us/Reviews page provides information about the platform and allows users to leave reviews.
@@ -218,7 +218,7 @@ The wireframes for Stitchin were created using Balsamiq. They include views for 
 
 ## Database Schema - Entity Relationship Diagram
 
-The database schema for Stitchin was created using dbdiagram.io. It includes tables for users, patterns, comments, libraries, and pattern hooks needles.
+The database schema for Stitchin was created using dbdiagram.io. It includes tables for users, patterns, comments, favourites, and pattern hooks needles.
 
 ![Database Schema](docs/readme/erd.png)
 
@@ -240,7 +240,7 @@ Stitchin employs several security measures to protect user data and ensure a saf
 | Pattern Page          | Visible            | Visible         |
 | Profile Page          | Not Visible, showing the 'sign up/log in' button only | Visible         |
 | Upload Pattern Page   | Not Visible        | Visible         |
-| Library Page          | Not Visible        | Visible         |
+| Favourite Page          | Not Visible        | Visible         |
 | About Us/Reviews Page | Visible, showing 'log in to leave feedback' button | Visible (review form visible) |
 
 ## CRUD Functionality
@@ -249,7 +249,7 @@ Stitchin employs several security measures to protect user data and ensure a saf
 |----------|--------|------|--------|--------|
 | Pattern  | Yes    | Yes  | Yes    | Yes    |
 | Profile  | Yes    | Yes  | Yes    | Yes    |
-| Library  | Yes (Created upon registration) | Yes  | Yes    | No (It is unnecessary to delete the user's library as it is intended for them to save the interested patterns for later) |
+| Favourite  | Yes (Created upon registration) | Yes  | Yes    | No (It is unnecessary to delete the user's favourite as it is intended for them to save the interested patterns for later) |
 | Comments | Yes    | Yes  | Yes    | Yes    |
 
 ## Feature Showcase
@@ -284,8 +284,8 @@ Stitchin employs several security measures to protect user data and ensure a saf
 </details>
 
 <details>
-    <summary>Library Page: Shows the patterns saved by the user in their personal library.</summary>  
-    <img src="docs/views/library.png">  
+    <summary>Favourite Page: Shows the patterns saved by the user in their personal favourite.</summary>  
+    <img src="docs/views/favourite.png">  
 </details>
 
 <details>
@@ -298,7 +298,7 @@ Stitchin employs several security measures to protect user data and ensure a saf
 - **Pattern Liking:** Enable logged-in users to like patterns.
 - **Comment on Comments:** Allow users to comment on others' comments and like comments.
 - **Tagging:** Allow users to tag patterns for better categorization.
-- **Create Collection within Library:** Allow users to create collections within their library to categorize the patterns.
+- **Create Collection within Favourite:** Allow users to create collections within their favourite to categorize the patterns.
 - **More Knitting Tools and Pattern Details:** Allow users to upload different crafts with more pattern details.
 - **Buying Pattern:** Enable users to sell their patterns and other users to support the creators.
 

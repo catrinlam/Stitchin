@@ -29,18 +29,18 @@
                                     <h2 class="card-title">{{ pattern.title }}</h2>
                                 </a>
                                 {% if user.is_authenticated %}
-                                <form method="post" action="{% url 'toggle_library' pattern.slug %}">
+                                <form method="post" action="{% url 'toggle_favourite' pattern.slug %}">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-primary index-button">
                                         <span class="d-none d-lg-inline">
-                                            {% if pattern in library_patterns %}
-                                                <i class="fa-solid fa-heart"></i> In your Library
+                                            {% if pattern in favourite_patterns %}
+                                                <i class="fa-solid fa-heart"></i> In your Favourite
                                             {% else %}
-                                                <i class="fa-regular fa-heart"></i> Add to Library
+                                                <i class="fa-regular fa-heart"></i> Add to Favourite
                                             {% endif %}
                                         </span>
                                         <span class="d-inline d-lg-none">
-                                            {% if pattern in library_patterns %}
+                                            {% if pattern in favourite_patterns %}
                                                 <i class="fa-solid fa-heart"></i>
                                             {% else %}
                                                 <i class="fa-regular fa-heart"></i>

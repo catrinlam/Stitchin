@@ -31,7 +31,7 @@ enum difficulty_level {
   Hard
 }
 
-Table libraries {
+Table favourites {
   id integer [primary key]
   user_id integer [ref: - users.id]
   pattern_id integer [ref: > patterns.id]
@@ -42,7 +42,7 @@ Table libraries {
 Table collections {
   id integer [primary key]
   name varchar(255)
-  library_id integer [ref: > libraries.id]
+  favourite_id integer [ref: > favourites.id]
   pattern_id integer [ref: < patterns.id]
   created_at datetime
 }

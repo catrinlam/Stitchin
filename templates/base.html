@@ -60,7 +60,7 @@
                         <a class="nav-link {% if request.path == '/patterns/create/' %}active{% endif %}" aria-current="page" href="{% url 'post_pattern' %}">Upload a Pattern</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/library/' %}active{% endif %}" aria-current="page" href="{% url 'library' %}">My Library</a>
+                        <a class="nav-link {% if request.path == '/favourite/' %}active{% endif %}" aria-current="page" href="{% url 'favourite' %}">My Favourite</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">

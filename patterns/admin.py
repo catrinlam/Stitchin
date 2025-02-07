@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pattern, PatternHooksNeedle, Library
+from .models import Pattern, PatternHooksNeedle, Favourite
 from django_summernote.admin import SummernoteModelAdmin
 
 class PatternHooksNeedleInline(admin.TabularInline):
@@ -21,8 +21,8 @@ class PatternHooksNeedleAdmin(admin.ModelAdmin):
     search_fields = ('pattern__title', 'pattern__author__username')
     list_filter = ('pattern', 'type', 'hook_size', 'needle_size')
 
-@admin.register(Library)
-class LibraryAdmin(admin.ModelAdmin):
+@admin.register(Favourite)
+class FavouritesAdmin(admin.ModelAdmin):
     list_display = ('user', 'created_at')
     search_fields = ('user__username', 'pattern__title')
     list_filter = ('created_at',)

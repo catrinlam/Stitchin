@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError, transaction
-from .models import Pattern, PatternHooksNeedle, Library, DIFFICULTY_LEVEL, CRAFT, WEIGHT, SIZE, CATEGORY, HOOK_SIZE, NEEDLE_SIZE, HOOK_NEEDLE_TYPE
+from .models import Pattern, PatternHooksNeedle, Favourite, DIFFICULTY_LEVEL, CRAFT, WEIGHT, SIZE, CATEGORY, HOOK_SIZE, NEEDLE_SIZE, HOOK_NEEDLE_TYPE
 
 class PatternHooksNeedleModelTest(TestCase):
     def setUp(self):
@@ -163,7 +163,7 @@ class PatternModelTest(TestCase):
         with self.assertRaises(ValidationError):
             pattern.full_clean()
 
-class LibraryModelTest(TestCase):
+class FavouriteModelTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
         self.pattern = Pattern.objects.create(
@@ -176,62 +176,62 @@ class LibraryModelTest(TestCase):
             size=SIZE[0][0],  # One Size
             category=CATEGORY[0][0],  # Clothing
         )
-        self.library = Library.objects.create(
+        self.favourite = Favourite.objects.create(
             user=self.user,
             pattern=self.pattern
         )
 
-    def test_library_creation(self):
-        self.assertEqual(self.library.user, self.user)
-        self.assertEqual(self.library.pattern, self.pattern)
+    def test_favourite_creation(self):
+        self.assertEqual(self.favourite.user, self.user)
+        self.assertEqual(self.favourite.pattern, self.pattern)
 
-    # def test_library_str(self):
-    #     self.assertEqual(str(self.library), f"{self.user.username} library")
+    # def test_favourite_str(self):
+    #     self.assertEqual(str(self.favourite), f"{self.user.username} favourite")
 
-    def test_create_library_without_user(self):
+    def test_create_favourite_without_user(self):
         with self.assertRaises(IntegrityError):
-            Library.objects.create(
+            Favourite.objects.create(
                 pattern=self.pattern
             )
 
-    def test_create_library_without_pattern(self):
-        library = Library(
+    def test_create_favourite_without_pattern(self):
+        favourite = Favourite(
             user=self.user
         )
-        library.full_clean()  # This should not raise any errors
-        library.save()
-        self.assertEqual(library.user, self.user)
-        self.assertIsNone(library.pattern)
+        favourite.full_clean()  # This should not raise any errors
+        favourite.save()
+        self.assertEqual(favourite.user, self.user)
+        self.assertIsNone(favourite.pattern)
 
-    # def test_create_library_with_nonexistent_user(self):
+    # def test_create_favourite_with_nonexistent_user(self):
     #     with self.assertRaises(IntegrityError):
-    #             Library.objects.create(
+    #             Favourite.objects.create(
     #                 user_id=9999,  # Nonexistent user ID
     #                 pattern=self.pattern
     #             )
 
-    # def test_create_library_with_nonexistent_pattern(self):
+    # def test_create_favourite_with_nonexistent_pattern(self):
     #     with transaction.atomic():
     #         with self.assertRaises(IntegrityError):
-    #             Library.objects.create(
+    #             Favourite.objects.create(
     #                 user=self.user,
     #                 pattern_id=9999  # Nonexistent pattern ID
     #             )
 
-    # def test_create_duplicate_library(self):
+    # def test_create_duplicate_favourite(self):
     #     with self.assertRaises(IntegrityError):
-    #         Library.objects.create(
+    #         Favourite.objects.create(
     #             user=self.user,
     #             pattern=self.pattern
             # )
 
-    # def test_update_library_user(self):
+    # def test_update_favourite_user(self):
     #     new_user = User.objects.create_user(username='newuser', password='12345')
-    #     self.library.user = new_user
-    #     self.library.save()
-    #     self.assertEqual(self.library.user, new_user)
+    #     self.favourite.user = new_user
+    #     self.favourite.save()
+    #     self.assertEqual(self.favourite.user, new_user)
 
-    # def test_update_library_pattern(self):
+    # def test_update_favourite_pattern(self):
     #     new_pattern = Pattern.objects.create(
     #         author=self.user,
     #         title='New Test Pattern',
@@ -242,6 +242,6 @@ class LibraryModelTest(TestCase):
     #         size=SIZE[0][0],  # One Size
     #         category=CATEGORY[0][0],  # Clothing
     #     )
-    #     self.library.pattern = new_pattern
-    #     self.library.save()
-    #     self.assertEqual(self.library.pattern, new_pattern)
+    #     self.favourite.pattern = new_pattern
+    #     self.favourite.save()
+    #     self.assertEqual(self.favourite.pattern, new_pattern)

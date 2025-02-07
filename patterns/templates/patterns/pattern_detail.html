@@ -10,18 +10,18 @@
             <div class="d-flex flex-column flex-sm-row justify-content-between">
                 <h1 class="display-4">{{ pattern.title }}</h1>
                 {% if user.is_authenticated %}
-                <form method="post" action="{% url 'toggle_library' pattern.slug %}">
+                <form method="post" action="{% url 'toggle_favourite' pattern.slug %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary">
-                        {% if pattern in library_patterns %}
-                            <i class="fa-solid fa-heart"></i> In your Library
+                        {% if pattern in favourite_patterns %}
+                            <i class="fa-solid fa-heart"></i> In your Favourite
                         {% else %}
-                            <i class="fa-regular fa-heart"></i> Add to Library
+                            <i class="fa-regular fa-heart"></i> Add to Favourite
                         {% endif %}
                     </button>
                 </form>
                 {% else %}
-                <p class="mt-3"><a href="{% url 'account_login' %}">Log in</a> to add this pattern to your library.</p>
+                <p class="mt-3"><a href="{% url 'account_login' %}">Log in</a> to add this pattern to your favourite.</p>
                 {% endif %}
             </div>
             <div class="d-flex justify-content-between">

@@ -129,15 +129,15 @@ class PatternHooksNeedle(models.Model):
         return f"{type_display} for {self.pattern.title} by {self.pattern.author.username}"
 
 
-class Library(models.Model):
+class Favourite(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="libraries")
-    pattern = models.ManyToManyField(Pattern, blank=True, related_name="libraries")
+        User, on_delete=models.CASCADE, related_name="favourites")
+    pattern = models.ManyToManyField(Pattern, blank=True, related_name="Favourites")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     # def __str__(self):
-    #     return f"{self.user.username} library"
+    #     return f"{self.user.username} favourite"
 
 
 class Comment(models.Model):

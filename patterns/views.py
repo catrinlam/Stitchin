@@ -3,13 +3,14 @@ from django.views import generic
 from django.contrib import messages
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
-from .models import Pattern, PatternHooksNeedle, Library
+from .models import Pattern, PatternHooksNeedle, Favourite
 from .forms import PatternForm, PatternHooksNeedleFormSet
 
 class PatternList(generic.ListView):
     queryset = Pattern.objects.all().order_by('-created_at')
     template_name = "patterns/index.html"
     paginate_by = 8
+    
     
 def pattern_detail(request, slug):
     """
@@ -30,32 +31,30 @@ def pattern_detail(request, slug):
     needle_displayed = any(hn.needle_size is not None for hn in hooks_needles)
     hook_displayed = any(hn.hook_size is not None for hn in hooks_needles)
     
-    library_patterns = []
+    favourite_patterns = []
     if request.user.is_authenticated:
-        library = Library.objects.get(user=request.user)
-        library_patterns = library.pattern.all()
+        favourite = Favourite.objects.get(user=request.user)
+        favourite_patterns = favourite.pattern.all()
 
     context = {
         'pattern': pattern,
         'hooks_needles': hooks_needles,
         'needle_displayed': needle_displayed,
         'hook_displayed': hook_displayed,
-        'library_patterns': library_patterns,
+        'favourite_patterns': favourite_patterns,
     }
     return render(request, 'patterns/pattern_detail.html', context)
 
 
 @login_required
-def toggle_library(request, slug):
+def toggle_favourite(request, slug):
     pattern = get_object_or_404(Pattern, slug=slug)
-    library = Library.objects.get(user=request.user)
+    favourite = Favourite.objects.get(user=request.user)
     
-    if library.pattern.filter(id=pattern.id).exists():
-        library.pattern.remove(pattern)
-        # messages.success(request, "Pattern removed from your library.")
+    if favourite.pattern.filter(id=pattern.id).exists():
+        favourite.pattern.remove(pattern)
     else:
-        library.pattern.add(pattern)
-        # messages.success(request, "Pattern added to your library.")
+        favourite.pattern.add(pattern)
     
     return redirect('pattern_detail', slug=slug)
 
@@ -86,8 +85,8 @@ def post_pattern(request):
 
 
 @login_required
-def library_view(request):
-    library = Library.objects.get(user=request.user)
-    patterns = library.pattern.all()
-    return render(request, 'library/library.html', {'patterns': patterns})
+def favourite_view(request):
+    favourite = Favourite.objects.get(user=request.user)
+    patterns = favourite.pattern.all()
+    return render(request, 'favourite/favourite.html', {'patterns': patterns})
 
