@@ -9,7 +9,7 @@ from .forms import PatternForm, PatternHooksNeedleFormSet
 class PatternList(generic.ListView):
     queryset = Pattern.objects.all().order_by('-created_at')
     template_name = "patterns/index.html"
-    paginate_by = 6
+    paginate_by = 8
     
 def pattern_detail(request, slug):
     """

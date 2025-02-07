@@ -200,14 +200,31 @@ h2, h3, h4, h5, h6 {
 
 /* Index Page Styles */
 .card {
+    background-color: var(--accent-color);
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
+
+.card-img-top {
+    border-radius: 10px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+/* .card-header{
+    margin-bottom: 2rem;
+} */
 
 .card-title {
     font-size: 1.5rem;
     color: var(--secondary-color);
+}
+
+.index-button{
+    background-color: var(--background-color);
 }
 
 .card-text {
