@@ -11,6 +11,15 @@ class PatternList(generic.ListView):
     template_name = "patterns/index.html"
     paginate_by = 8
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            favourite = Favourite.objects.get(user=self.request.user)
+            context['favourite_patterns'] = favourite.pattern.all()
+        else:
+            context['favourite_patterns'] = []
+        return context
+    
     
 def pattern_detail(request, slug):
     """
@@ -56,7 +65,7 @@ def toggle_favourite(request, slug):
     else:
         favourite.pattern.add(pattern)
     
-    return redirect('pattern_detail', slug=slug)
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 
 @login_required
