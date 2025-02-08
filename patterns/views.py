@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
 from django.contrib import messages
-from django.db import IntegrityError
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Pattern, PatternHooksNeedle, Favourite
-from .forms import PatternForm, PatternHooksNeedleFormSet
+from .models import Pattern, PatternHooksNeedle, Favourite, Comment
+from .forms import PatternForm, PatternHooksNeedleFormSet, CommentForm
 
 class PatternList(generic.ListView):
     queryset = Pattern.objects.all().order_by('-created_at')
@@ -40,6 +40,20 @@ def pattern_detail(request, slug):
     needle_displayed = any(hn.needle_size is not None for hn in hooks_needles)
     hook_displayed = any(hn.hook_size is not None for hn in hooks_needles)
     
+    comments = pattern.comments.all().order_by("-created_at")
+    comment_count = pattern.comments.count()
+    
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.pattern = pattern
+            comment.save()
+            messages.success(request, "Comment posted successfully!")
+    
+    comment_form = CommentForm()
+
     favourite_patterns = []
     if request.user.is_authenticated:
         favourite = Favourite.objects.get(user=request.user)
@@ -51,6 +65,9 @@ def pattern_detail(request, slug):
         'needle_displayed': needle_displayed,
         'hook_displayed': hook_displayed,
         'favourite_patterns': favourite_patterns,
+        "comments": comments,
+        "comment_count": comment_count,
+        "comment_form": comment_form,
     }
     return render(request, 'patterns/pattern_detail.html', context)
 
@@ -71,6 +88,41 @@ def toggle_favourite(request, slug):
     
     return redirect(request.META.get('HTTP_REFERER', 'home'))
 
+@login_required
+def edit_comment(request, slug, comment_id):
+    """
+    view to edit comments
+    """
+    if request.method == "POST":
+
+        pattern = get_object_or_404(Pattern, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment_form = CommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.pattern = pattern
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+
+    return HttpResponseRedirect(reverse('pattern_detail', args=[slug]))
+
+def delete_comment(request, slug, comment_id):
+    """
+    view to delete comment
+    """
+    pattern = get_object_or_404(Pattern, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('pattern_detail', args=[slug]))
 
 @login_required
 def post_pattern(request):

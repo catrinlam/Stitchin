@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.text import slugify
-from .models import Pattern, PatternHooksNeedle
+from .models import Pattern, PatternHooksNeedle, Comment
 # from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
 
@@ -30,3 +30,8 @@ class PatternHooksNeedleForm(forms.ModelForm):
 PatternHooksNeedleFormSet = inlineformset_factory(
     Pattern, PatternHooksNeedle, fields=('type', 'hook_size', 'needle_size'), extra=1, can_delete=True
 )
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content',)

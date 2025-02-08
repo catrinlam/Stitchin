@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pattern, PatternHooksNeedle, Favourite
+from .models import Pattern, PatternHooksNeedle, Favourite, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 class PatternHooksNeedleInline(admin.TabularInline):
@@ -26,3 +26,5 @@ class FavouritesAdmin(admin.ModelAdmin):
     list_display = ('user', 'created_at')
     search_fields = ('user__username', 'pattern__title')
     list_filter = ('created_at',)
+    
+admin.site.register(Comment)

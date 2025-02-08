@@ -144,7 +144,7 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="comments"
     )
-    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE)
+    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE, related_name="comments")
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

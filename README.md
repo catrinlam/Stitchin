@@ -487,6 +487,5 @@ You can fork this repository by using the following steps:
 ## Media
 
 - [Flaticon](https://www.flaticon.com/) - favicon design
-- [pexels](https://www.pexels.com/) - [Default image by Anna Tukhfatullina](https://www.pexels.com/photo/two-knitted-bags-2557040/)
-
+- [pexels](https://www.pexels.com/) - [Default image by Anna Tukhfatullina](https://www.pexels.com/photo/two-knitted-bags-2557040/) and [Default landscape image by Daniel Duarte](https://www.pexels.com/photo/crotcheted-teddy-bear-18371014/)
 ## Acknowledgements
