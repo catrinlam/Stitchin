@@ -7,4 +7,5 @@ urlpatterns = [
     path('post/', views.post_pattern, name='post_pattern'),
     path('<slug:slug>/', views.pattern_detail, name='pattern_detail'),
     path('<slug:slug>/toggle-favourite/', views.toggle_favourite, name='toggle_favourite'),
+    path('<slug:slug>/edit-pattern/',views.pattern_edit, name='pattern_edit'),
 ]

@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="display-4 text-center">Post a New Pattern</h1>
+        <h1 class="display-4 text-center">Post a New Pattern</h1>
     <form method="post" enctype="multipart/form-data" class="mt-4 mb-4 form">
         {% csrf_token %}
         <div class="mb-3">
@@ -15,6 +15,9 @@
                             <span class="text-danger">*</span>
                         {% endif %} 
                         {{ form.title }}
+                        {% if form.title.errors %}
+                            <div class="text-danger">{{ form.title.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -26,6 +29,9 @@
                             <span class="text-danger">*</span>
                         {% endif %}
                         {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="text-danger">{{ form.description.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -37,6 +43,9 @@
                             <span class="text-danger">*</span>
                         {% endif %}
                         {{ form.difficulty_level }}
+                        {% if form.difficulty_level.errors %}
+                            <div class="text-danger">{{ form.difficulty_level.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -48,6 +57,9 @@
                             <span class="text-danger">*</span>
                         {% endif %}
                         {{ form.craft }}
+                        {% if form.craft.errors %}
+                            <div class="text-danger">{{ form.craft.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col">
@@ -57,6 +69,9 @@
                             <span class="text-danger">*</span>
                         {% endif %}
                         {{ form.yarn_weight }}
+                        {% if form.yarn_weight.errors %}
+                            <div class="text-danger">{{ form.yarn_weight.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -68,6 +83,9 @@
                             <span class="text-danger">*</span>
                         {% endif %}
                         {{ form.size }}
+                        {% if form.size.errors %}
+                            <div class="text-danger">{{ form.size.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col">
@@ -77,6 +95,9 @@
                             <span class="text-danger">*</span>
                         {% endif %}
                         {{ form.category }}
+                        {% if form.category.errors %}
+                            <div class="text-danger">{{ form.category.errors }}</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -89,14 +110,23 @@
                     <div class="col">
                         <div class="form-group">
                             {{ form.type.label_tag }} {{ form.type }}
+                            {% if form.type.errors %}
+                                <div class="text-danger">{{ form.type.errors }}</div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             {{ form.hook_size.label_tag }} {{ form.hook_size }}
+                            {% if form.hook_size.errors %}
+                                <div class="text-danger">{{ form.hook_size.errors }}</div>
+                            {% endif %}
                         </div>
                         <div class="form-group">
                             {{ form.needle_size.label_tag }} {{ form.needle_size }}
+                            {% if form.needle_size.errors %}
+                                <div class="text-danger">{{ form.needle_size.errors }}</div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -104,82 +134,11 @@
         </div>
         
         <button type="button" class="btn btn-secondary mb-3" id="add-formset">Add Hook/Needle</button>
-        <button type="submit" class="btn btn-primary post-button mb-3">Submit</button>
+        <button type="submit" class="btn btn-primary post-button mb-3">Create Pattern</button>
     </form>
 </div>
 {% endblock %}
 
-{% block scripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function toggleSizeFields(row) {
-            const typeField = row.querySelector('[name*="type"]');
-            const hookSizeField = row.querySelector('[name*="hook_size"]').closest('.form-group');
-            const needleSizeField = row.querySelector('[name*="needle_size"]').closest('.form-group');
-
-            function updateVisibility() {
-                console.log(typeField.value);
-                if (typeField.value === '0') {
-                    hookSizeField.style.display = 'block';
-                    needleSizeField.style.display = 'none';
-                } else if (typeField.value === '1') {
-                    hookSizeField.style.display = 'none';
-                    needleSizeField.style.display = 'block';
-                } else {
-                    hookSizeField.style.display = 'none';
-                    needleSizeField.style.display = 'none';
-                }
-            }
-
-            updateVisibility();
-            typeField.addEventListener('change', updateVisibility);
-        }
-
-        document.querySelectorAll('#hooks-needles-formset .form-row').forEach(toggleSizeFields);
-
-        const formsetContainer = document.getElementById('hooks-needles-formset');
-        const addFormsetButton = document.getElementById('add-formset');
-        const totalForms = document.getElementById('id_pattern_hooks_needles-TOTAL_FORMS');
-        let formCount = {{ formset.total_form_count }};
-
-        addFormsetButton.addEventListener('click', function() {
-            let currentFormCount = formsetContainer.children.length;
-            const newForm = formsetContainer.children[0].cloneNode(true);
-            const formRegex = RegExp(`pattern_hooks_needles-(\\d){1}-`, 'g');
-
-            formCount++;
-
-            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `pattern_hooks_needles-${currentFormCount}-`);
-            formsetContainer.appendChild(newForm);
-            totalForms.setAttribute('value', formCount + 1);
-            currentFormCount++;
-
-            toggleSizeFields(newForm);
-
-            // Add a delete button to the new form
-            const deleteButton = document.createElement('button');
-            deleteButton.type = 'button';
-            deleteButton.className = 'btn btn-danger remove-form mt-2';
-            deleteButton.textContent = 'Remove';
-            deleteButton.addEventListener('click', function() {
-                newForm.remove();
-                formCount--;
-                totalForms.setAttribute('value', formCount);
-            });
-            newForm.appendChild(deleteButton);
-
-            formsetContainer.appendChild(newForm);
-            totalForms.setAttribute('value', formCount);
-        });
-
-        // Add delete functionality to existing forms
-        document.querySelectorAll('.remove-form').forEach(button => {
-            button.addEventListener('click', function() {
-                button.closest('.form-row').remove();
-                formCount--;
-                totalForms.setAttribute('value', formCount);
-            });
-        });
-    });
-</script>
+{% block extras %}
+<script src="{% static 'js/pattern_form.js' %}"></script>
 {% endblock %}
