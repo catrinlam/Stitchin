@@ -113,9 +113,7 @@
         <!-- We want a for loop inside the empty control tags
           to iterate through each comment in comments -->
         {% for comment in comments %}
-        <div class="p-2 comments
-          {% if not comment.approved and comment.author == user %}
-          faded{% elif not comment.approved %} d-none{% endif %}">
+        <div class="p-2 >
           <p class="font-weight-bold">
             {{ comment.author }}
             <span class="font-weight-normal">
@@ -149,7 +147,7 @@
               class="btn btn-secondary btn-lg">Submit</button>
           </form>
           {% else %}
-          <p>Log in to leave a comment</p>
+          <p><a href="{% url 'account_login' %}">Log in</a> to leave a comment</p>
           {% endif %}
         </div>
       </div>

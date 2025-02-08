@@ -117,6 +117,11 @@ h2, h3, h4, h5, h6 {
     max-width: fit-content;
 }
 
+.form .btn-primary {
+    background-color: var(--dark-green-color);
+    color: var(--background-color);
+}
+
 .btn-primary:hover {
     background-color: var(--secondary-color);
 }
