@@ -115,7 +115,14 @@
                     <p class="m-0 text-white">Made by Catrin Lam</p>
                     <p class="m-0 text-white">
                         <a href="{% url 'home' %}" class="text-white">Patterns</a> |
-                        <a href="#" class="text-white">About Me</a>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'post_pattern' %}" class="text-white">Upload a Pattern</a> |
+                        <a href="{% url 'favourite' %}" class="text-white">My Favourite</a> |
+                        <a href="{% url 'account_logout' %}" class="text-white">Logout</a>
+                        {% else %}
+                        <a href="{% url 'account_signup'%}" class="text-white">Register</a> |
+                        <a href="{% url 'account_login' %}" class="text-white">Login</a>
+                        {% endif %}
                     </p>
                 </div>
                 <div class="col-12 text-center mt-2">
