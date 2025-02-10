@@ -1,16 +1,20 @@
 from django import forms
 from django.utils.text import slugify
 from .models import Pattern, PatternHooksNeedle, Comment
-# from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
+
 
 class PatternForm(forms.ModelForm):
     class Meta:
         model = Pattern
-        fields = ['title', 'description', 'difficulty_level', 'craft', 'yarn_weight', 'size', 'category']
+        fields = ['title', 'description', 'difficulty_level',
+                  'craft', 'yarn_weight', 'size', 'category']
         error_messages = {
             'title': {
-                'unique': "A pattern with this title already exists. Please choose a different title.",
+                'unique': (
+                    "A pattern with this title already exists. "
+                    "Please choose a different title."
+                ),
             },
         }
 
@@ -21,6 +25,7 @@ class PatternForm(forms.ModelForm):
             instance.save()
         return instance
 
+
 class PatternHooksNeedleForm(forms.ModelForm):
     class Meta:
         model = PatternHooksNeedle
@@ -28,8 +33,13 @@ class PatternHooksNeedleForm(forms.ModelForm):
 
 
 PatternHooksNeedleFormSet = inlineformset_factory(
-    Pattern, PatternHooksNeedle, fields=('type', 'hook_size', 'needle_size'), extra=1, can_delete=True
+    Pattern,
+    PatternHooksNeedle,
+    fields=('type', 'hook_size', 'needle_size'),
+    extra=1,
+    can_delete=True
 )
+
 
 class CommentForm(forms.ModelForm):
     class Meta:

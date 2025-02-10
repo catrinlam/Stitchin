@@ -3,14 +3,15 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Pattern, PatternHooksNeedle, Favourite, Comment
+from .models import Pattern, Favourite, Comment
 from .forms import PatternForm, PatternHooksNeedleFormSet, CommentForm
+
 
 class PatternList(generic.ListView):
     queryset = Pattern.objects.all().order_by('-created_at')
     template_name = "patterns/index.html"
     paginate_by = 8
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
@@ -19,8 +20,8 @@ class PatternList(generic.ListView):
         else:
             context['favourite_patterns'] = []
         return context
-    
-    
+
+
 def pattern_detail(request, slug):
     """
     Display an individual :model:`pattern.Pattern`.
@@ -36,13 +37,13 @@ def pattern_detail(request, slug):
     """
     pattern = get_object_or_404(Pattern, slug=slug)
     hooks_needles = pattern.pattern_hooks_needles.all()
-        
+
     needle_displayed = any(hn.needle_size is not None for hn in hooks_needles)
     hook_displayed = any(hn.hook_size is not None for hn in hooks_needles)
-    
+
     comments = pattern.comments.all().order_by("-created_at")
     comment_count = pattern.comments.count()
-    
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -51,7 +52,7 @@ def pattern_detail(request, slug):
             comment.pattern = pattern
             comment.save()
             messages.success(request, "Comment posted successfully!")
-    
+
     comment_form = CommentForm()
 
     favourite_patterns = []
@@ -79,14 +80,26 @@ def toggle_favourite(request, slug):
     """
     pattern = get_object_or_404(Pattern, slug=slug)
     favourite = Favourite.objects.get(user=request.user)
-    
+
     if favourite.pattern.filter(id=pattern.id).exists():
         favourite.pattern.remove(pattern)
         messages.success(request, f"{pattern.title} removed from favourites.")
     else:
         favourite.pattern.add(pattern)
-    
-    return redirect(request.META.get('HTTP_REFERER', 'home'))
+
+    return HttpResponseRedirect(
+        request.META.get(
+            'HTTP_REFERER', reverse('pattern_detail', args=[slug])
+        )
+    )
+
+
+@login_required
+def favourite_view(request):
+    favourite = Favourite.objects.get(user=request.user)
+    patterns = favourite.pattern.all()
+    return render(request, 'favourite/favourite.html', {'patterns': patterns})
+
 
 @login_required
 def edit_comment(request, slug, comment_id):
@@ -105,24 +118,31 @@ def edit_comment(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment!'
+            )
 
     return HttpResponseRedirect(reverse('pattern_detail', args=[slug]))
 
+
+@login_required
 def delete_comment(request, slug, comment_id):
     """
     view to delete comment
     """
-    pattern = get_object_or_404(Pattern, slug=slug)
+    # pattern = get_object_or_404(Pattern, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author == request.user:
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!'
+        )
 
     return HttpResponseRedirect(reverse('pattern_detail', args=[slug]))
+
 
 @login_required
 def post_pattern(request):
@@ -132,7 +152,7 @@ def post_pattern(request):
     if request.method == "POST":
         form = PatternForm(request.POST, request.FILES)
         formset = PatternHooksNeedleFormSet(request.POST)
-        
+
         if form.is_valid() and formset.is_valid():
             try:
                 pattern = form.save(commit=False)
@@ -149,55 +169,8 @@ def post_pattern(request):
     else:
         form = PatternForm()
         formset = PatternHooksNeedleFormSet()
-    return render(request, 'patterns/post_pattern.html', {'form': form, 'formset': formset})
-
-
-@login_required
-def favourite_view(request):
-    favourite = Favourite.objects.get(user=request.user)
-    patterns = favourite.pattern.all()
-    return render(request, 'favourite/favourite.html', {'patterns': patterns})
-
-
-# @login_required
-# def edit_pattern(request, slug):
-#     """
-#     View to edit an existing pattern.
-#     Redirects to post_pattern.html with pre-filled information.
-#     """
-#     pattern = get_object_or_404(Pattern, slug=slug)
-
-#     if request.user != pattern.author:
-#         messages.error(request, "You are not authorised to edit this pattern.")
-#         return redirect('pattern_detail', slug=pattern.slug)
-
-#     if request.method == "POST":
-#         form = PatternForm(request.POST, request.FILES, instance=pattern)
-#         formset = PatternHooksNeedleFormSet(request.POST, instance=pattern)
-        
-#         print("Form:", form)
-#         print("Formset:", formset)
-
-#         if form.is_valid() and formset.is_valid():
-#             try:
-#                 pattern = form.save()
-#                 formset.save()
-#                 messages.success(request, "Pattern updated successfully!")
-#                 return redirect('pattern_detail', slug=pattern.slug)
-#             except Exception as e:
-#                 messages.error(request, f"Error updating pattern: {e}")
-#         else:
-#             print("Form errors:", form.errors)
-#             print("Formset errors:", formset.errors)
-#             messages.error(request, "Error updating pattern. Please correct the errors below.")
-
-#     else:
-#         form = PatternForm(instance=pattern)
-#         formset = PatternHooksNeedleFormSet(instance=pattern)
-
-#     return render(request, 'patterns/post_pattern.html', {
-#         'form': form,
-#         'formset': formset,
-#         'is_editing': True,  # Flag to indicate editing mode
-#         'pattern': pattern,
-#     })
+    return render(
+        request,
+        'patterns/post_pattern.html',
+        {'form': form, 'formset': formset}
+    )

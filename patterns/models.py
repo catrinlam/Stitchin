@@ -106,19 +106,14 @@ class Pattern(models.Model):
     yarn_weight = models.IntegerField(choices=WEIGHT)
     size = models.IntegerField(choices=SIZE, blank=True, null=True)
     category = models.IntegerField(choices=CATEGORY, blank=True, null=True)
-    # pdf_url = models.URLField(max_length=255, blank=True, null=True)
-    # images = models.TextField()
-    # videos = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    # def __str__(self):
-    #     return f"{self.title} made by {self.author.username}"
 
 
 class PatternHooksNeedle(models.Model):
     pattern = models.ForeignKey(
-        Pattern, on_delete=models.CASCADE, related_name="pattern_hooks_needles")
+        Pattern, on_delete=models.CASCADE,
+        related_name="pattern_hooks_needles")
     type = models.IntegerField(choices=HOOK_NEEDLE_TYPE)
     hook_size = models.IntegerField(choices=HOOK_SIZE, blank=True, null=True)
     needle_size = models.IntegerField(
@@ -126,25 +121,27 @@ class PatternHooksNeedle(models.Model):
 
     def __str__(self):
         type_display = dict(HOOK_NEEDLE_TYPE).get(self.type, "Unknown")
-        return f"{type_display} for {self.pattern.title} by {self.pattern.author.username}"
+        return (
+            f"{type_display} for {self.pattern.title} "
+            f"by {self.pattern.author.username}"
+        )
 
 
 class Favourite(models.Model):
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="favourites")
-    pattern = models.ManyToManyField(Pattern, blank=True, related_name="Favourites")
+    pattern = models.ManyToManyField(
+        Pattern, blank=True, related_name="Favourites")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
-    # def __str__(self):
-    #     return f"{self.user.username} favourite"
 
 
 class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="comments"
     )
-    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE, related_name="comments")
+    pattern = models.ForeignKey(
+        Pattern, on_delete=models.CASCADE, related_name="comments")
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

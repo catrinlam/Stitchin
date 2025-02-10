@@ -12,5 +12,4 @@ urlpatterns = [
          views.edit_comment, name='edit_comment'),
     path('<slug:slug>/delete-comment/<int:comment_id>',
          views.delete_comment, name='delete_comment'),
-    # path('<slug:slug>/edit-pattern/',views.pattern_edit, name='pattern_edit'),
 ]

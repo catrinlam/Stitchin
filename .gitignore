@@ -6,3 +6,4 @@ sample-README.md
 env.py
 __pycache__
 fixtures
+staticfiles
