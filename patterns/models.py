@@ -131,7 +131,7 @@ class Favourite(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="favourites")
     pattern = models.ManyToManyField(
-        Pattern, blank=True, related_name="Favourites")
+        Pattern, blank=True, related_name="favourites")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

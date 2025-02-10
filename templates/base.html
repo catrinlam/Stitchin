@@ -62,11 +62,6 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/favourite/' %}active{% endif %}" aria-current="page" href="{% url 'favourite' %}">My Favourite</a>
                     </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">About Me</a>
-                    </li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ user.username }}
