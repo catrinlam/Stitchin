@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
 
 DIFFICULTY_LEVEL = (
     (0, 'Easy'),
@@ -106,6 +108,7 @@ class Pattern(models.Model):
     yarn_weight = models.IntegerField(choices=WEIGHT)
     size = models.IntegerField(choices=SIZE, blank=True, null=True)
     category = models.IntegerField(choices=CATEGORY, blank=True, null=True)
+    image = CloudinaryField('image', default='placeholder')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

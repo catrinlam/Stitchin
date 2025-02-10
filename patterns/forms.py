@@ -8,7 +8,7 @@ class PatternForm(forms.ModelForm):
     class Meta:
         model = Pattern
         fields = ['title', 'description', 'difficulty_level',
-                  'craft', 'yarn_weight', 'size', 'category']
+                  'craft', 'yarn_weight', 'size', 'category', 'image']
         error_messages = {
             'title': {
                 'unique': (

@@ -34,10 +34,10 @@
             <hr>
             <div class="pattern-details row d-flex flex-wrap flex-md-nowrap">
                 <div class="col-md-4">
-                    {% if pattern.image %}
-                        <img src="{{ pattern.image.url }}" alt="{{ pattern.title }}" class="img-fluid mb-4 pattern-image">
-                    {% else %}
+                    {% if "placeholder" in pattern.image.url %}
                         <img src="{% static 'images/default.jpg' %}" alt="placeholder for pattern image" class="img-fluid mb-4 pattern-image">
+                    {% else %}
+                        <img src="{{ pattern.image.url }}" alt="{{ pattern.title }}" class="img-fluid mb-4 pattern-image">
                     {% endif %}
                 </div>
                 <div class="col-md-8">
