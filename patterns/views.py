@@ -5,12 +5,21 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Pattern, Favourite, Comment
 from .forms import PatternForm, PatternHooksNeedleFormSet, CommentForm
+from django.db.models import Q
 
 
 class PatternList(generic.ListView):
     queryset = Pattern.objects.all().order_by('-created_at')
     template_name = "patterns/index.html"
     paginate_by = 8
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Pattern.objects.filter(
+                Q(title__icontains=query) | Q(author__username__icontains=query)
+            ).order_by('-created_at')
+        return super().get_queryset()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,6 +28,7 @@ class PatternList(generic.ListView):
             context['favourite_patterns'] = favourite.pattern.all()
         else:
             context['favourite_patterns'] = []
+        context['search_query'] = self.request.GET.get('q', '')
         return context
 
 

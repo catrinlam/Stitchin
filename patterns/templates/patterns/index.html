@@ -10,6 +10,16 @@
             <h1 class="display-4 text-center">Patterns</h1>
         </div>
 
+        <!-- Search Bar -->
+        <div class="col-12 mb-4 d-flex justify-content-center">
+            <form method="get" action="{% url 'home' %}" class="w-50">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search for patterns or authors" value="{{ search_query }}">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+
         <!-- Pattern Entries Column -->
         <div class="col-12">
             <div class="row">

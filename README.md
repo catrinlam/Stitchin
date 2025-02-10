@@ -4,6 +4,8 @@
 
 Stitchin is a Django-based web application for users to share their knitting and crochet patterns. Other users can like and comment on these patterns, and add the pattern to their favourite so they can use the pattern later.
 
+
+
 Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
 
 ## Table of Contents
