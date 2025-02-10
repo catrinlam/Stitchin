@@ -10,11 +10,11 @@
 <head>
     <title>{% block title %}Stitchin{% endblock %}</title>
     {% comment %} <title>Stitchin</title> {% endcomment %}
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Your go-to place for knitting and crochet patterns" />
-    <meta name="keywords" content="knitting, crochet, patterns, yarn, wool, needle, hook" />
-    <meta name="author" content="Catrin Lam" />
-    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your go-to place for knitting and crochet patterns">
+    <meta name="keywords" content="knitting, crochet, patterns, yarn, wool, needle, hook">
+    <meta name="author" content="Catrin Lam">
+    <meta charset="UTF-8">
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- Favicon -->
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -111,7 +111,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="m-0 text-white">&copy {% now "Y" %} Stitchin</p>
+                    <p class="m-0 text-white">&amp;copy {% now "Y" %} Stitchin</p>
                     <p class="m-0 text-white">Made by Catrin Lam</p>
                     <p class="m-0 text-white">
                         <a href="{% url 'home' %}" class="text-white">Patterns</a> |

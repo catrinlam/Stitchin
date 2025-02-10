@@ -4,7 +4,7 @@
 
 Stitchin is a Django-based web application for users to share their knitting and crochet patterns. Other users can like and comment on these patterns, and add the pattern to their favourite so they can use the pattern later.
 
-
+[UI Responsive](https://ui.dev/amiresponsive?url=https://stitchin-aa280977732a.herokuapp.com/)
 
 Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
 
@@ -53,7 +53,7 @@ Visit the live site here: [Stitchin](https://stitchin.herokuapp.com/)
   - [Code Creation](#code-creation)
   - [Debugging](#debugging)
   - [Performance and UX Optimization](#performance-and-ux-optimization)
-  - [Automated Unit Testing](#automated-unit-testing)
+  - [Development Workflow](#development-workflow)
   - [Overall Impact](#overall-impact)
 - [Credits](#credits)
   - [Code](#code)
@@ -275,10 +275,10 @@ Stitchin employs several security measures to protect user data and ensure a saf
     <img src="docs/views/pattern.png">  
 </details>
 
-<details>
+<!-- <details>
     <summary>Profile Page: Allows users to view and edit their personal information.</summary>  
     <img src="docs/views/profile.png">  
-</details>
+</details> -->
 
 <details>
     <summary>Upload Pattern Page: Enables users to upload new patterns to the platform.</summary>  
@@ -290,14 +290,13 @@ Stitchin employs several security measures to protect user data and ensure a saf
     <img src="docs/views/favourite.png">  
 </details>
 
-<details>
+<!-- <details>
     <summary>About Us/Reviews Page: Provides information about the platform and allows users to leave reviews. The review form is only visible to logged-in users.</summary>  
     <img src="docs/views/about-us.png">  
-</details>
+</details> -->
 
 ## Future Features
 
-- **Pattern Liking:** Enable logged-in users to like patterns.
 - **Comment on Comments:** Allow users to comment on others' comments and like comments.
 - **Tagging:** Allow users to tag patterns for better categorization.
 - **Create Collection within Favourite:** Allow users to create collections within their favourite to categorize the patterns.
@@ -330,7 +329,7 @@ Please refer to [TESTING.md](TESTING.md) for all testing.
 
 # Deployment
 
-The live deployed application can be found deployed on [here]().
+The live deployed application can be found deployed on [here](https://stitchin-aa280977732a.herokuapp.com/).
 
 ## PostgreSQL Database
 
@@ -457,26 +456,31 @@ You can fork this repository by using the following steps:
 # AI Implementation and Orchestration
 
 ## Use Cases and Reflections
+Throughout the development of Stitchin, GitHub Copilot was integrated into the workflow to assist with various aspects of coding, debugging, and optimisation. This project marked a significant step in leveraging AI-powered development tools to enhance efficiency and maintain code quality.
 
 ## Code Creation
 
-**Reflection:**
+**Reflection:** Initially, GitHub Copilot was primarily used to generate repetitive boilerplate code, such as Django models, serializers, and views. Over time, its utility expanded beyond that, as it provided alternative implementations and prompted exploration of more efficient coding patterns. One key benefit was its ability to suggest more concise and Pythonic ways to handle database queries, which streamlined the development process.
 
-**Highlight:** 
+**Highlight:** The iterative nature of working with Copilot improved the clarity of prompts and requests. By refining input queries, the quality of generated code improved, demonstrating the importance of structured communication with AI tools.
 
 ## Debugging
 
-**Reflection:**
+**Reflection:** Copilot played a role in identifying potential errors and inconsistencies within the codebase. While it was not a replacement for manual debugging, it provided suggestions that highlighted overlooked issues. Additionally, it facilitated simplifications in complex logic, making the codebase more maintainable and readable.
 
 ## Performance and UX Optimization
 
-**Reflection:** 
+**Reflection:** Copilot contributed to refining the front-end experience, particularly in styling and responsiveness. While front-end development was not a primary focus, AI-assisted recommendations improved UI consistency by suggesting minor but effective changes, such as adjusting breakpoints and optimising Bootstrap styling. These refinements enhanced the overall user experience.
 
-## Automated Unit Testing
+## Development Workflow
 
-**Reflection:** 
+**Reflection:**  The integration of Copilot influenced the approach to development, encouraging an iterative workflow. It provided a secondary perspective when structuring new features and prompted considerations that might not have been initially accounted for. However, while its suggestions were valuable, they occasionally required significant modification to align with project-specific requirements.
 
 ## Overall Impact
+
+Using AI-assisted development tools like GitHub Copilot proved beneficial in streamlining repetitive tasks, debugging, and optimising code structure. However, it was evident that AI should complement, rather than replace, core development skills. The experience reinforced the importance of critical evaluation when incorporating AI-generated solutions, ensuring that code remains maintainable, efficient, and aligned with best practices.
+
+The process of working with AI tools also encouraged a more structured approach to problem-solving and documentation. Clearer articulation of requirements led to improved results, both in AI-assisted development and broader software engineering practices.
 
 # Credits
 
@@ -490,4 +494,13 @@ You can fork this repository by using the following steps:
 
 - [Flaticon](https://www.flaticon.com/) - favicon design
 - [pexels](https://www.pexels.com/) - [Default image by Anna Tukhfatullina](https://www.pexels.com/photo/two-knitted-bags-2557040/) and [Default landscape image by Daniel Duarte](https://www.pexels.com/photo/crotcheted-teddy-bear-18371014/)
+
 ## Acknowledgements
+
+I would like to express my heartfelt gratitude to my family and partner for believing in me and supporting me throughout the Bootcamp.
+
+A huge thank you to my Learning Facilitator, [Emma Lamont](https://github.com/elamont174 ), for her invaluable guidance, patience, and for always being there to answer my questions.
+
+I am also incredibly grateful to my mentor, [Spencer Barriball](https://github.com/5pence), for his support and insightful advice.
+
+Lastly, thank you to my Coding Coachs, [Ruairidh MacArthur](https://github.com/roomacarthur), and [John Rearden](https://github.com/johnrearden) for their support and encouragement whenever I encountered coding challenges.

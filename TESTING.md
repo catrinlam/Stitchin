@@ -24,6 +24,8 @@ Return back to the [README.md](README.md) file.
 
 ### HTML Validation
 
+[HTML validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fstitchin-aa280977732a.herokuapp.com%2F)
+
 ![HTML validation](docs/testing/html_valid.png)
 
 ### JavaScript Validation
