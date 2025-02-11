@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 
 {% block title %}My Favourite{% endblock %}
 
@@ -16,7 +17,7 @@
                             {% if "placeholder" in pattern.image.url %}
                             <img src="{% static 'images/default.jpg' %}" class="card-img-top img-fluid" alt="placeholder for pattern image">
                             {% else %}
-                            <img src="{{ pattern.image.url }}" class="card-img-top img-fluid" alt="{{ pattern.title }}">
+                            {% cloudinary pattern.image quality="auto" format="webp" class="card-img-top img-fluid"%}
                             {% endif %}
                         </a>
                         <div class="card-body">

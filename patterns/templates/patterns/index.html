@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
 
@@ -30,7 +31,7 @@
                             {% if "placeholder" in pattern.image.url %}
                             <img src="{% static 'images/default.jpg' %}" class="card-img-top img-fluid" alt="placeholder for pattern image">
                             {% else %}
-                            <img src="{{ pattern.image.url }}" class="card-img-top img-fluid" alt="{{ pattern.title }}">
+                            {% cloudinary pattern.image quality="auto" format="webp" class="card-img-top img-fluid"%}
                             {% endif %}
                         </a>
                         <div class="card-body">
@@ -61,7 +62,7 @@
                                 {% endif %}
                             </div>
 
-                            <hr />
+                            <hr>
 
                             <div class="d-flex justify-content-between">
                                 <p class="card-text text-muted h6 me-3">
