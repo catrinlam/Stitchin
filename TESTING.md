@@ -32,10 +32,10 @@ Return back to the [README.md](README.md) file.
 | --------------------- | ------ | -------- | -------------------------------- |
 | Home                  | 0      | 0        |                                  |
 | Sign In               | 0      | 0        |                                  |
-| [Sign Up](docs/testing/html_signup.png)               | 4      | 0        | Error based on Django form       |
+| [Sign Up](docs/testing/html_signup.png)               | 1      | 0        | Error based on built-in Django form       |
 | Pattern Detail        | 0      | 0        |                                  |
 | Post Pattern          | 0      | 0        |                                  |
-| [Delete Comment](docs/testing/html_delete_comment.png)        | 2      | 0        | Error based on ID for javascript |
+| Delete Comment        | 0      | 0        | |
 | View Favourites       | 0      | 0        |                                  |
 | Log Out               | 0      | 0        |                                  |
 | Forgot Password       | 0      | 0        | 
@@ -49,6 +49,8 @@ Return back to the [README.md](README.md) file.
 ![JS validation on Comments](docs/testing/js_comments.png)
 
 **Note:** The warning in the JavaScript validation for the `comments.js` file was due to `bootstrap` being defined in the `base.html` file.
+
+**Note:** The `/*jshint esversion: 6 */` directive was added to the top of the JavaScript files to specify the ECMAScript version.
 
 ### Python Validation
 

@@ -46,7 +46,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--accent-color);
+    color: var(--secondary-color);
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -353,7 +353,7 @@ h2, h3, h4, h5, h6 {
 
 /* Auth Pages Styles */
 .login, .signup, .password-reset {
-    max-width: fit-content;
+    max-width: 70%;
 }
 
 .login input{

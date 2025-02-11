@@ -109,7 +109,7 @@
       <h3>Comments:</h3>
       <div class="card-body">
         {% for comment in comments %}
-        <div class="p-2" >
+        <div class="p-2">
           <p>
             {{ comment.author }}
             <span>
@@ -120,10 +120,8 @@
             {{ comment.content | linebreaks }}
           </div>
             {% if user.is_authenticated and comment.author == user %}
-                <button class="btn btn-primary btn-edit"
-                    comment_id="{{ comment.id }}">Edit</button>
-                <button class="btn btn-secondary btn-delete"
-                    comment_id="{{ comment.id }}">Delete</button>
+                <button class="btn btn-primary btn-edit" data-comment-id="{{ comment.id }}">Edit</button>
+                <button class="btn btn-secondary btn-delete" data-comment-id="{{ comment.id }}">Delete</button>
             {% endif %}
         </div>
         <!-- Our for loop ends here -->
