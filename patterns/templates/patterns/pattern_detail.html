@@ -22,8 +22,6 @@
                         {% endif %}
                     </button>
                 </form>
-                {% comment %} {% elif user.is_authenticated and pattern.author == user %}
-                <a href="{% url 'edit_pattern' pattern.slug %}" class="btn btn-primary mt-3">Edit</a> {% endcomment %}
                 {% elif not user.is_authenticated %}
                 <p class="mt-3"><a href="{% url 'account_login' %}">Log in</a> to add this pattern to your favourite.</p>
                 {% endif %}
@@ -111,13 +109,11 @@
     <div class="col-md-8 card bg-trans mb-4 mt-3 ">
       <h3>Comments:</h3>
       <div class="card-body">
-        <!-- We want a for loop inside the empty control tags
-          to iterate through each comment in comments -->
         {% for comment in comments %}
-        <div class="p-2 >
-          <p class="font-weight-bold">
+        <div class="p-2">
+          <p>
             {{ comment.author }}
-            <span class="font-weight-normal">
+            <span>
               {{ comment.created_at }}
             </span> wrote:
           </p>
@@ -125,10 +121,8 @@
             {{ comment.content | linebreaks }}
           </div>
             {% if user.is_authenticated and comment.author == user %}
-                <button class="btn btn-primary btn-edit"
-                    comment_id="{{ comment.id }}">Edit</button>
-                <button class="btn btn-secondary btn-delete"
-                    comment_id="{{ comment.id }}">Delete</button>
+                <button class="btn btn-primary btn-edit" data-comment-id="{{ comment.id }}">Edit</button>
+                <button class="btn btn-secondary btn-delete" data-comment-id="{{ comment.id }}">Delete</button>
             {% endif %}
         </div>
         <!-- Our for loop ends here -->

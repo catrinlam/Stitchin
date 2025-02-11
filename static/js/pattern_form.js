@@ -1,11 +1,16 @@
-console.log('pattern_form.js loaded');
-
 document.addEventListener('DOMContentLoaded', function() {
+    /**
+     * Toggles the visibility of hook size and needle size fields based on the selected type.
+     * The form row containing the type, hook size, and needle size fields.
+     */
     function toggleSizeFields(row) {
         const typeField = row.querySelector('[name*="type"]');
         const hookSizeField = row.querySelector('[name*="hook_size"]').closest('.form-group');
         const needleSizeField = row.querySelector('[name*="needle_size"]').closest('.form-group');
 
+        /**
+         * Updates the visibility of the hook size and needle size fields based on the selected type.
+         */
         function updateVisibility() {
             if (typeField.value === '0') {
                 hookSizeField.style.display = 'block';
@@ -23,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         typeField.addEventListener('change', updateVisibility);
     }
 
+    // Initialize visibility for existing form rows
     document.querySelectorAll('#hooks-needles-formset .form-row').forEach(toggleSizeFields);
 
     const formsetContainer = document.getElementById('hooks-needles-formset');
@@ -35,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const newForm = formsetContainer.children[0].cloneNode(true);
         const formRegex = RegExp(`pattern_hooks_needles-(\\d){1}-`, 'g');
 
-        console.log('form count', formCount);
         formCount++;
 
         newForm.innerHTML = newForm.innerHTML.replace(formRegex, `pattern_hooks_needles-${currentFormCount}-`);
