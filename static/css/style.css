@@ -364,7 +364,7 @@ h2, h3, h4, h5, h6 {
 
 /* Footer styles */
 .footer {
-    background-color: var(--text-color);
+    background-color: #6C584C;
     color: var(--background-color);
     /* padding: 20px;    */
     text-align: center;
