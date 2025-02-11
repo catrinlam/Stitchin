@@ -143,7 +143,6 @@ Link to User Stories in GitHub Projects: [GitHub Projects Kanban Board](https://
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **logged in user**, I can **create and update my profile** so that I can **personalize my account**. | MUST HAVE |
 | As a **logged in user**, I can **delete my account** so that I can **remove my profile and all my personal data from the platform**. | MUST HAVE |
 | As a **logged in user**, I can **log in via my email and password** so that I can **access my account**. | MUST HAVE |
 | As a **logged in user**, I can **log out of my account** so that I can **securely end my session**. | MUST HAVE |

@@ -1,78 +1,82 @@
-{% extends "base.html" %}
-{% load static %}
-{% load cloudinary %}
-
-{% block title %}My Favourite{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% load cloudinary %} {% block title
+%}My Favourite{% endblock %} {% block content %}
 
 <div class="container-fluid">
-    <h1 class="display-4 text-center">My Favourite</h1>
-    <div class="row mt-5">
-        {% if patterns %}
-            {% for pattern in patterns %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-                    <div class="card">
-                        <a href="{% url 'pattern_detail' pattern.slug %}" class="post-link">
-                            {% if "placeholder" in pattern.image.url %}
-                            <img src="{% static 'images/default.jpg' %}" class="card-img-top img-fluid" alt="placeholder for pattern image">
-                            {% else %}
-                            {% cloudinary pattern.image quality="auto" format="webp" class="card-img-top img-fluid"%}
-                            {% endif %}
-                        </a>
-                        <div class="card-body">
-                            <a href="{% url 'pattern_detail' pattern.slug %}" class="post-link">
-                                <h2 class="card-title">{{ pattern.title }}</h2>
-                            </a>
-                            <form method="post" action="{% url 'toggle_favourite' pattern.slug %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa-solid fa-heart-broken"></i> Remove from Favourite
-                                </button>
-                            </form>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text text-muted h6">
-                                    {{ pattern.author.username }}
-                                </p>
-                                <p class="card-text text-muted h6">
-                                    {{ pattern.created_at|date:"F j, Y" }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            {% if is_paginated %}
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    {% if page_obj.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo; PREVIOUS</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for num in page_obj.paginator.page_range %}
-                    <li class="page-item {% if page_obj.number == num %}active{% endif %}">
-                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                    </li>
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                            <span aria-hidden="true">NEXT &raquo;</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </nav>
-            {% endif %}
-        {% else %}
-            <div class="col-12">
-                <p class="text-center">You have no patterns in your favourite.</p>
-            </div>
-        {% endif %}
+  <h1 class="display-4 text-center">My Favourite</h1>
+  <div class="row mt-5">
+    {% if patterns %} {% for pattern in patterns %}
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+      <div class="card">
+        <a href="{% url 'pattern_detail' pattern.slug %}" class="post-link">
+          {% if "placeholder" in pattern.image.url %}
+          <img
+            src="{% static 'images/default.jpg' %}"
+            class="card-img-top img-fluid"
+            alt="placeholder for pattern image"
+            loading="lazy"
+          />
+          {% else %} {% cloudinary pattern.image alt=pattern.title
+          quality="auto" format="webp" class="card-img-top img-fluid"
+          loading="lazy" alt%} {% endif %}
+        </a>
+        <div class="card-body">
+          <a href="{% url 'pattern_detail' pattern.slug %}" class="post-link">
+            <h2 class="card-title">{{ pattern.title }}</h2>
+          </a>
+          <form
+            method="post"
+            action="{% url 'toggle_favourite' pattern.slug %}"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+              <i class="fa-solid fa-heart-broken"></i> Remove from Favourite
+            </button>
+          </form>
+          <hr />
+          <div class="d-flex justify-content-between">
+            <p class="card-text text-muted h6">{{ pattern.author.username }}</p>
+            <p class="card-text text-muted h6">
+              {{ pattern.created_at|date:"F j, Y" }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    {% endfor %} {% if is_paginated %}
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="?page={{ page_obj.previous_page_number }}"
+            aria-label="Previous"
+          >
+            <span aria-hidden="true">&laquo; PREVIOUS</span>
+          </a>
+        </li>
+        {% endif %} {% for num in page_obj.paginator.page_range %}
+        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %} {% if page_obj.has_next %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="?page={{ page_obj.next_page_number }}"
+            aria-label="Next"
+          >
+            <span aria-hidden="true">NEXT &raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %} {% else %}
+    <div class="col-12">
+      <p class="text-center">You have no patterns in your favourite.</p>
+    </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
