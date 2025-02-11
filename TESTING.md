@@ -15,10 +15,12 @@ Return back to the [README.md](README.md) file.
     - [CSS Validation](#css-validation)
     - [Lighthouse Scores](#lighthouse-scores)
     - [Accessible Web Helper](#accessible-web-helper)
+  - [Unit Testing](#unit-testing)
   - [Manual Testing](#manual-testing)
     - [User Input/Form Validation](#user-inputform-validation)
     - [Testing User Stories](#testing-user-stories)
   - [Bugs](#bugs)
+
 
 ## Validation
 
@@ -100,6 +102,16 @@ Lighthouse testing was carried out in Incognito mode to achieve the best result.
   
 <hr>  
 
+### Unit Testing
+
+I have created 69 unit tests to test the backend functionality of the Stitchin application. These tests cover various aspects of the application, including views, models, and forms.
+
+To run the unit tests, run the command `python manage.py test patterns`
+
+![Unit Testing Results](docs/testing/unit_tests.png)
+
+<hr>
+
 ## Manual Testing
 
 ### User Input/Form Validation
@@ -111,8 +123,6 @@ Testing was carried out on desktop using a Chrome browser to ensure all forms ta
 | Sign Up                | User can create a new account                                                    | Username, Email, Password                                                           | Success message, Redirect to home page                                               | Pass      | N/A |
 | Sign In                | User can log in to their account                                                 | Username, Password                                                                  | Success message, Redirect to home page                                                | Pass      | N/A |
 | Post Pattern           | User can post a new pattern                                                      | Title, Description, Difficulty Level, Craft, Yarn Weight, Image     | Success message, Redirect to pattern detail page                                      | Pass      | N/A |
-| Edit Pattern           | User can edit their posted pattern                                               | Title, Description, Difficulty Level, Craft, Yarn Weight, Size, Category, Image     | Success message, Redirect to pattern detail page                                      | Pass      | N/A |
-| Delete Pattern         | User can delete their posted pattern                                             | Confirmation                                                                        | Success message, Redirect to home page                                                | Pass      | N/A |
 | Comment on Pattern     | User can comment on a pattern                                                    | Comment content                                                                     | Success message, Comment appears below the pattern                                    | Pass      | N/A |
 | Edit Comment           | User can edit their comment                                                      | Updated comment content                                                             | Success message, Updated comment appears below the pattern                            | Pass      | N/A |
 | Delete Comment         | User can delete their comment                                                    | Confirmation                                                                        | Success message, Comment is removed                                                   | Pass      | N/A |
@@ -145,8 +155,8 @@ User Stories are documented in the [Stitchin GitHub Projects Board](https://gith
   
 ## Bugs  
   
-| No. | Bug | Solved | Fix | Solution Credit | Commit no. |
-| --- | ---------------- | ---- | ------------- | -------------- | ------------|
-| 1   | Pattern image upload not working | Yes | Updated form enctype to "multipart/form-data" | Self | abc123 |
-| 2   | Comment edit button not visible | Yes | Added condition to check if user is the author of the comment | Self | def456 |
-| 3   | Search functionality not returning results | Yes | Fixed query in the view to search by title and author | Self | ghi789 |
+| No. | Bug | Solved |
+| --- | ---------------- | ---- |
+| 1   | Cannot update the pattern from user side due to having a formset in pattern | No |
+| 2   | Margins between cards are not balanced | No |
+

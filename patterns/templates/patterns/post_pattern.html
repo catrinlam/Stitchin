@@ -1,136 +1,158 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<div class="container">
-  <h1 class="display-4 text-center">Post a New Pattern</h1>
-  <form method="post" enctype="multipart/form-data" class="mt-4 mb-4 form">
-    {% csrf_token %}
-    <div class="mb-3">
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.title.label_tag }} {% if form.title.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.title }} {% if form.title.errors %}
-            <div class="text-danger">{{ form.title.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.description.label_tag }} {% if
-            form.description.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.description }} {% if form.description.errors %}
-            <div class="text-danger">{{ form.description.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.image.label_tag }} {% if form.image.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.image }} {% if form.image.errors %}
-            <div class="text-danger">{{ form.image.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.difficulty_level.label_tag }} {% if
-            form.difficulty_level.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.difficulty_level }} {% if
-            form.difficulty_level.errors %}
-            <div class="text-danger">{{ form.difficulty_level.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.craft.label_tag }} {% if form.craft.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.craft }} {% if form.craft.errors %}
-            <div class="text-danger">{{ form.craft.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            {{ form.yarn_weight.label_tag }} {% if
-            form.yarn_weight.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.yarn_weight }} {% if form.yarn_weight.errors %}
-            <div class="text-danger">{{ form.yarn_weight.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.size.label_tag }} {% if form.size.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.size }} {% if form.size.errors %}
-            <div class="text-danger">{{ form.size.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            {{ form.category.label_tag }} {% if form.category.field.required %}
-            <span class="text-danger">*</span>
-            {% endif %} {{ form.category }} {% if form.category.errors %}
-            <div class="text-danger">{{ form.category.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-    <h4 class="mt-4">Hooks and Needles</h4>
-    {{ formset.management_form }}
-    <div id="hooks-needles-formset" class="mb-3">
-      {% for form in formset %}
-      <div class="form-row mb-3">
-        <div class="col">
-          <div class="form-group">
-            {{ form.type.label_tag }} {{ form.type }} {% if form.type.errors %}
-            <div class="text-danger">{{ form.type.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            {{ form.hook_size.label_tag }} {{ form.hook_size }} {% if
-            form.hook_size.errors %}
-            <div class="text-danger">{{ form.hook_size.errors }}</div>
-            {% endif %}
-          </div>
-          <div class="form-group">
-            {{ form.needle_size.label_tag }} {{ form.needle_size }} {% if
-            form.needle_size.errors %}
-            <div class="text-danger">{{ form.needle_size.errors }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+{% extends "base.html" %}
+{% load static %}
 
-    <button type="button" class="btn btn-secondary mb-3" id="add-formset">
-      Add Hook/Needle
-    </button>
-    <button type="submit" class="btn btn-primary post-button mb-3">
-      Create Pattern
-    </button>
-  </form>
+{% block content %}
+<div class="container">
+        <h1 class="display-4 text-center">Post a New Pattern</h1>
+    <form method="post" enctype="multipart/form-data" class="mt-4 mb-4 form">
+        {% csrf_token %}
+        <div class="mb-3">
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.title.label_tag }} 
+                        {% if form.title.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %} 
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                            <div class="text-danger">{{ form.title.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.description.label_tag }}
+                        {% if form.description.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="text-danger">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.image.label_tag }}
+                        {% if form.image.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.image }}
+                        {% if form.image.errors %}
+                            <div class="text-danger">{{ form.image.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.difficulty_level.label_tag }}
+                        {% if form.difficulty_level.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.difficulty_level }}
+                        {% if form.difficulty_level.errors %}
+                            <div class="text-danger">{{ form.difficulty_level.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.craft.label_tag }}
+                        {% if form.craft.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.craft }}
+                        {% if form.craft.errors %}
+                            <div class="text-danger">{{ form.craft.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.yarn_weight.label_tag }}
+                        {% if form.yarn_weight.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.yarn_weight }}
+                        {% if form.yarn_weight.errors %}
+                            <div class="text-danger">{{ form.yarn_weight.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.size.label_tag }}
+                        {% if form.size.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.size }}
+                        {% if form.size.errors %}
+                            <div class="text-danger">{{ form.size.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.category.label_tag }}
+                        {% if form.category.field.required %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                        {{ form.category }}
+                        {% if form.category.errors %}
+                            <div class="text-danger">{{ form.category.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="mt-4">Hooks and Needles</h4>
+        {{ formset.management_form }}
+        <div id="hooks-needles-formset" class="mb-3">
+            {% for form in formset %}
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ form.type.label_tag }} {{ form.type }}
+                            {% if form.type.errors %}
+                                <div class="text-danger">{{ form.type.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            {{ form.hook_size.label_tag }} {{ form.hook_size }}
+                            {% if form.hook_size.errors %}
+                                <div class="text-danger">{{ form.hook_size.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.needle_size.label_tag }} {{ form.needle_size }}
+                            {% if form.needle_size.errors %}
+                                <div class="text-danger">{{ form.needle_size.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <button type="button" class="btn btn-secondary mb-3" id="add-formset">Add Hook/Needle</button>
+        <button type="submit" class="btn btn-primary post-button mb-3">Create Pattern</button>
+    </form>
 </div>
-{% endblock %} {% block extras %}
+{% endblock %}
+
+{% block extras %}
 <script src="{% static 'js/pattern_form.js' %}"></script>
 {% endblock %}
