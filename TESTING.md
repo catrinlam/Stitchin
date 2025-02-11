@@ -32,11 +32,40 @@ Return back to the [README.md](README.md) file.
 
 [JSHint](https://jshint.com/) was used to validate the small amount of JavaScript code added to the project.
 
-![JS validation](docs/testing/js_valid.png)
+![JS validation on Pattern Form](docs/testing/js_pattern_form.png)
+
+![JS validation on Comments](docs/testing/js_comments.png)
+
+**Note:** The warning in the JavaScript validation for the `comments.js` file was due to `bootstrap` being defined in the `base.html` file.
 
 ### Python Validation
 
 [CI Python Linter](https://pep8ci.herokuapp.com/#) was used to validate the Python files
+
+<details>
+    <summary>Validation on admin.py: No errors found</summary>  
+    <img src="docs/testing/py_admin.png">  
+</details>
+
+<details>
+    <summary>Validation on forms.py: No errors found</summary>  
+    <img src="docs/testing/py_forms.png">  
+</details>
+
+<details>
+    <summary>Validation on models.py: No errors found</summary>  
+    <img src="docs/testing/py_models.png">  
+</details>
+
+<details>
+    <summary>Validation on urls.py: No errors found</summary>  
+    <img src="docs/testing/py_urls.png">  
+</details>
+
+<details>
+    <summary>Validation on views.py: No errors found</summary>  
+    <img src="docs/testing/py_views.png">  
+</details>
 
 ### CSS Validation 
 
@@ -48,7 +77,7 @@ Return back to the [README.md](README.md) file.
    
 ### Lighthouse Scores
 
-Lighthouse testing was carried out in Incognito mode to acheive the best result.
+Lighthouse testing was carried out in Incognito mode to achieve the best result.
 
 **Desktop**  
 

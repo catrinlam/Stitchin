@@ -81,6 +81,7 @@ The color scheme for Stitchin is designed to be visually appealing andu user-fri
 
 - **Primary Color:** #ADC178 (Olivine)
 - **Secondary Color:** #A98467 (Chamoisee)
+- **Dark Green Color**: #556B2F (Dark Olive Green)
 - **Accent Color:** #C6D8A7 (Tea Green)
 - **Background Color:** #F0EAD2 (Parchment)
 - **Text Color:** #6C584C (Umber)
