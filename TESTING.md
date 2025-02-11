@@ -14,7 +14,7 @@ Return back to the [README.md](README.md) file.
     - [Python Validation](#python-validation)
     - [CSS Validation](#css-validation)
     - [Lighthouse Scores](#lighthouse-scores)
-    - [Accessible Web Helper](#accessible-web-helper)
+    - [Wave Accessibility Evaluation](#wave-accessibility-evaluation)
   - [Unit Testing](#unit-testing)
   - [Manual Testing](#manual-testing)
     - [User Input/Form Validation](#user-inputform-validation)
@@ -95,11 +95,12 @@ Lighthouse testing was carried out in Incognito mode to achieve the best result.
   
 <hr>  
 
-### Accessible Web Helper
+### Wave Accessibility Evaluation
 
-![Accessible Web Helper](docs/testing/access_report.png)  
+[Wave Accessibility Evaluation](https://wave.webaim.org/) was used to check the accessibility of the page.
 
-  
+![Wave Accessibility Evaluation](docs/testing/access_report.png)  
+
 <hr>  
 
 ### Unit Testing

@@ -4,7 +4,7 @@
     --dark-green-color: #556B2F; /* Dark Olive Green */
     --accent-color: #C6D8A7; /* Parchment */
     --background-color: #F0EAD2; /* Tea Green */
-    --text-color: #6C584C; /* Umber */
+    --text-color: #492E1C; /* Dark Brown */
 }
 /* Base styles */
 body {
@@ -223,7 +223,7 @@ h2, h3, h4, h5, h6 {
 
 .card-title {
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .index-button{

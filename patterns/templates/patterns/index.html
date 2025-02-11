@@ -15,7 +15,8 @@
         <div class="col-12 mb-4 d-flex justify-content-center">
             <form method="get" action="{% url 'home' %}" class="w-50">
                 <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search for patterns or authors" value="{{ search_query }}">
+                    <label for="search" class="sr-only">Search for patterns or authors</label>
+                    <input type="text" id="search" name="q" class="form-control" placeholder="Search for patterns or authors" value="{{ search_query }}">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>
@@ -78,7 +79,7 @@
                 {% endfor %}
             </div>
         </div>
-            </div>
+    </div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
