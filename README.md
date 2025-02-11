@@ -146,7 +146,7 @@ Link to User Stories in GitHub Projects: [GitHub Projects Kanban Board](https://
 | As a **logged in user**, I can **delete my account** so that I can **remove my profile and all my personal data from the platform**. | MUST HAVE |
 | As a **logged in user**, I can **log in via my email and password** so that I can **access my account**. | MUST HAVE |
 | As a **logged in user**, I can **log out of my account** so that I can **securely end my session**. | MUST HAVE |
-| As a **logged in user**, I can **see notifications when I register, update, or delete my account** so that I am **informed of the changes**. | SHOULD HAVE |
+| As a **logged in user**, I can **see notifications when I register, log in, or log out from my account** so that I am **informed of the changes**. | SHOULD HAVE |
 | As a **logged in user**, I can **see my username at the top right corner** so that I know I am **logged in**. | MUST HAVE |
 
 ### Pattern
@@ -154,7 +154,6 @@ Link to User Stories in GitHub Projects: [GitHub Projects Kanban Board](https://
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
 | As a **logged in user**, I can **upload new patterns to the platform** so that I can **share my creations with the community**. | MUST HAVE |
-| As a **logged in user**, I can **delete my own pattern** so that I can **remove it if needed**. | MUST HAVE |
 | As a **logged in user**, I can **add other users as collaborators to the pattern** so that we can **work on it together**. | COULD HAVE |
 | As a **logged in user**, I can **see notifications when I upload a pattern** so that I am **informed of the changes**. | SHOULD HAVE |
 | As a **user**, I can **search for a pattern** so that I can **find specific patterns quickly**. | SHOULD HAVE |
@@ -197,10 +196,6 @@ The wireframes for Stitchin were created using Balsamiq. They include views for 
   - The sign-up page allows new users to create an account on the platform.
   ![Sign Up Page](docs/wireframes/sign-up.png)
 
-- **Profile Page**
-  - The profile page allows users to view and edit their personal information.
-  ![Profile Page](docs/wireframes/profile.png)
-
 - **Upload Pattern Page**
   - The upload pattern page enables users to upload new patterns to the platform.
   ![Upload Pattern Page](docs/wireframes/upload-pattern.png)
@@ -232,7 +227,6 @@ Stitchin employs several security measures to protect user data and ensure a saf
 |-----------------------|--------------------|-----------------|
 | Home Page             | Visible            | Visible         |
 | Pattern Page          | Visible            | Visible         |
-| Profile Page          | Not Visible, showing the 'sign up/log in' button only | Visible         |
 | Upload Pattern Page   | Not Visible        | Visible         |
 | Favourite Page          | Not Visible        | Visible         |
 

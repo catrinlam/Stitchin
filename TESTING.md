@@ -99,7 +99,7 @@ Lighthouse testing was carried out in Incognito mode to achieve the best result.
 
 [Wave Accessibility Evaluation](https://wave.webaim.org/) was used to check the accessibility of the page.
 
-![Wave Accessibility Evaluation](docs/testing/access_report.png)  
+<img src="docs/testing/access_report.png" alt="Wave Accessibility Evaluation" height="500px">  
 
 <hr>  
 
