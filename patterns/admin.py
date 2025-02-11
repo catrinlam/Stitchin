@@ -37,6 +37,6 @@ class FavouritesAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'pattern', 'created_at')
+    list_display = ('author', 'pattern__title', 'created_at')
     search_fields = ('author__username', 'pattern__title')
     list_filter = ('created_at',)
